@@ -3,6 +3,7 @@ import Hero from '@/components/home/Hero'
 import ServicesSection from '@/components/home/ServicesSection'
 import TrustSection from '@/components/home/TrustSection'
 import CasesSection from '@/components/home/CasesSection'
+import BlogSection from '@/components/home/BlogSection'
 import CtaSection from '@/components/home/CtaSection'
 import FaqSection from '@/components/home/FaqSection'
 import { Metadata } from 'next'
@@ -19,6 +20,7 @@ export default function Home() {
       <ServicesSection />
       <TrustSection />
       <CasesSection />
+      <BlogSection />
       <CtaSection />
       <FaqSection />
     </main>

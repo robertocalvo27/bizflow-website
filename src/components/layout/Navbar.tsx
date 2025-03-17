@@ -195,11 +195,6 @@ const Navbar = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-
-          {/* Blog link */}
-          <Link href="/blog" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
-            Blog
-          </Link>
         </div>
 
         {/* Call to Action */}
@@ -323,10 +318,6 @@ const Navbar = () => {
                       El Equipo Bizflow
                     </Link>
                   </div>
-
-                  <Link href="/blog" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
-                    Blog
-                  </Link>
                 </nav>
 
                 <div className="flex flex-col space-y-3 mt-6">
