@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, MessageSquare } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import ScheduleMeetingModal from '@/components/modals/ScheduleMeetingModal'
+import Link from 'next/link'
 
 interface CtaSectionProps {
   title: string
@@ -94,10 +94,10 @@ export const CtaSection = ({
               className="bg-white hover:bg-bizflow-blue-50 text-bizflow-blue-900 font-medium"
               asChild
             >
-              <a href={primaryButtonHref}>
+              <Link href={primaryButtonHref}>
                 <MessageSquare className="mr-2 h-4 w-4" />
                 {primaryButtonText}
-              </a>
+              </Link>
             </Button>
             
             {secondaryButtonText && secondaryButtonHref && (
@@ -107,10 +107,10 @@ export const CtaSection = ({
                 className="border-white text-white hover:bg-white/10"
                 asChild
               >
-                <a href={secondaryButtonHref}>
+                <Link href={secondaryButtonHref}>
                   {secondaryButtonText}
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+                </Link>
               </Button>
             )}
           </motion.div>
