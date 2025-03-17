@@ -1,15 +1,51 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 
-const RotatingWords = () => {
-  const words = ["ágiles", "inteligentes", "robustas"]
+// Definición de los slides
+const heroSlides = [
+  {
+    id: 1,
+    image: '/images/hero-industrial-automation.jpg',
+    preTitle: 'Operaciones industriales más',
+    rotatingWords: ["ágiles", "inteligentes", "robustas"],
+    description: 'Transformamos procesos industriales complejos en soluciones digitales ágiles. Implementación en semanas, no años.',
+    stats: {
+      text: 'Implementación en 4-6 semanas',
+      subtext: 'Resultados tangibles en tiempo récord'
+    }
+  },
+  {
+    id: 2,
+    image: '/images/digital-transformation-process.jpg',
+    preTitle: 'Lo que imaginas,',
+    rotatingWords: ["lo construimos", "lo optimizamos", "lo digitalizamos"],
+    description: 'Convertimos tus ideas en soluciones de software industrial a medida. Del concepto a la realidad en tiempo récord.',
+    stats: {
+      text: '+50 proyectos exitosos',
+      subtext: 'En diferentes industrias'
+    }
+  },
+  {
+    id: 3,
+    image: '/images/agile-implementation.jpg',
+    preTitle: 'Potenciado por',
+    rotatingWords: ["Inteligencia Artificial", "Machine Learning", "Automatización"],
+    description: 'Soluciones industriales inteligentes que aprenden y mejoran continuamente, maximizando la eficiencia operativa.',
+    stats: {
+      text: '30% más eficiencia',
+      subtext: 'Con IA y automatización'
+    }
+  }
+]
+
+const RotatingWords = ({ words }: { words: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   React.useEffect(() => {
@@ -18,21 +54,24 @@ const RotatingWords = () => {
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [words])
 
   return (
-    <div className="relative h-[40px] inline-block">
+    <div className="relative h-[60px] md:h-[80px] overflow-hidden">
       <AnimatePresence mode="wait">
-        <motion.span
+        <motion.div
           key={words[currentIndex]}
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -20, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute text-bizflow-purple-600"
+          exit={{ y: -40, opacity: 0 }}
+          transition={{ 
+            duration: 0.5,
+            ease: "easeInOut"
+          }}
+          className="text-bizflow-purple-600 text-4xl md:text-5xl lg:text-6xl font-bold absolute w-full"
         >
           {words[currentIndex]}
-        </motion.span>
+        </motion.div>
       </AnimatePresence>
     </div>
   )
@@ -89,6 +128,7 @@ const AIConsultaModal = () => {
 }
 
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0)
   const { scrollY } = useScroll()
   
   // Parallax transformations
@@ -99,6 +139,22 @@ const Hero = () => {
   const textY = useTransform(scrollY, [0, 300], [0, -50])
   const imageScale = useTransform(scrollY, [0, 300], [1, 1.1])
   const imageY = useTransform(scrollY, [0, 300], [0, 30])
+
+  // Auto-rotate slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 6000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
+  }
 
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
@@ -121,58 +177,93 @@ const Hero = () => {
             className="text-center lg:text-left"
             style={{ y: textY }}
           >
-            <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-bizflow-blue-900 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-2"
             >
-              Operaciones industriales más{" "}
-              <br className="hidden lg:block" />
-              <RotatingWords />
-            </motion.h1>
-            <motion.p 
-              className="text-lg md:text-xl text-bizflow-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              Transformamos procesos industriales complejos en soluciones digitales ágiles. 
-              Implementación en semanas, no años.
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <AIConsultaModal />
-              <Button asChild variant="outline" className="border-bizflow-blue-600 text-bizflow-blue-600 hover:bg-bizflow-blue-50">
-                <Link href="/servicios">
-                  Explorar Soluciones <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-bizflow-blue-900">
+                {heroSlides[currentSlide].preTitle}
+              </h1>
+              <RotatingWords words={heroSlides[currentSlide].rotatingWords} />
+              <div className="space-y-12">
+                <p className="text-lg md:text-xl text-bizflow-gray-600 max-w-2xl mx-auto lg:mx-0 mt-6">
+                  {heroSlides[currentSlide].description}
+                </p>
+                <motion.div 
+                  className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <AIConsultaModal />
+                  <Button asChild variant="outline" className="border-bizflow-blue-600 text-bizflow-blue-600 hover:bg-bizflow-blue-50">
+                    <Link href="/servicios">
+                      Explorar Soluciones <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </motion.div>
+              </div>
             </motion.div>
           </motion.div>
 
-          <motion.div 
-            className="relative h-[400px] lg:h-[600px]"
-            style={{ scale: imageScale, y: imageY }}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <Image
-              src="/images/hero-industrial-automation.jpg"
-              alt="Transformación digital industrial"
-              fill
-              className="object-cover rounded-2xl shadow-2xl"
-              priority
-              crossOrigin="anonymous"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-bizflow-blue-900/20 to-transparent rounded-2xl"></div>
+          <div className="relative h-[400px] lg:h-[600px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                className="absolute inset-0"
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.7 }}
+              >
+                <Image
+                  src={heroSlides[currentSlide].image}
+                  alt="Transformación digital industrial"
+                  fill
+                  className="object-cover rounded-2xl shadow-2xl"
+                  priority
+                  crossOrigin="anonymous"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bizflow-blue-900/20 to-transparent rounded-2xl"></div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation buttons */}
+            <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 flex justify-between z-20">
+              <button
+                onClick={prevSlide}
+                className="p-2 rounded-full bg-white/80 hover:bg-white text-bizflow-blue-900 transition-all transform hover:scale-110"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="p-2 rounded-full bg-white/80 hover:bg-white text-bizflow-blue-900 transition-all transform hover:scale-110"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
             
-            {/* Floating card with parallax */}
+            {/* Slide indicators */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+              {heroSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentSlide
+                      ? 'bg-white w-6'
+                      : 'bg-white/50 hover:bg-white/80'
+                  }`}
+                />
+              ))}
+            </div>
+            
+            {/* Stats card */}
             <motion.div 
               className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl max-w-xs"
               style={{ y: useTransform(scrollY, [0, 300], [0, -20]) }}
@@ -187,14 +278,14 @@ const Hero = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-bizflow-blue-900 mb-1">Implementación en 4-6 semanas</h3>
+                  <h3 className="font-bold text-bizflow-blue-900 mb-1">{heroSlides[currentSlide].stats.text}</h3>
                   <p className="text-sm text-bizflow-gray-600">
-                    Resultados tangibles en tiempo récord
+                    {heroSlides[currentSlide].stats.subtext}
                   </p>
                 </div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

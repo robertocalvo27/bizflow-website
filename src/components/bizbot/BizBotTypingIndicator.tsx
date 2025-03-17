@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+'use client'
+
+import React from 'react'
+import { motion } from 'framer-motion'
+import { MessageSquare } from 'lucide-react'
+=======
 'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare } from 'lucide-react';
+>>>>>>> df402362e5c128394b3403b9b649bc15aba8e374
 
 const BizBotTypingIndicator = () => {
   return (
@@ -30,7 +38,14 @@ const BizBotTypingIndicator = () => {
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+  )
+}
+
+export default BizBotTypingIndicator 
+=======
   );
 };
 
 export default BizBotTypingIndicator; 
+>>>>>>> df402362e5c128394b3403b9b649bc15aba8e374

@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Minimize2, Maximize2 } from 'lucide-react';
-import BizBotMessage from './BizBotMessage';
-import BizBotTypingIndicator from './BizBotTypingIndicator';
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { MessageSquare, X, Send, Minimize2, Maximize2 } from 'lucide-react'
+import BizBotMessage from '@/components/bizbot/BizBotMessage'
+import BizBotTypingIndicator from '@/components/bizbot/BizBotTypingIndicator'
 
 interface Message {
-  id: string;
-  type: 'bot' | 'user';
-  content: string;
-  timestamp: Date;
+  id: string
+  type: 'bot' | 'user'
+  content: string
+  timestamp: Date
 }
 
 const initialMessage: Message = {
@@ -18,35 +18,35 @@ const initialMessage: Message = {
   type: 'bot',
   content: '¡Hola! Soy BizBot, tu asistente virtual de Bizflow. Estoy aquí para ayudarte a encontrar las mejores soluciones de software industrial para tu empresa. ¿En qué puedo ayudarte hoy?',
   timestamp: new Date()
-};
+}
 
 const suggestedQuestions = [
   '¿Qué soluciones ofrecen para manufactura?',
   '¿Cómo puedo mejorar la eficiencia de mis operaciones?',
   '¿Cuánto tiempo toma implementar una solución?',
   '¿Tienen experiencia en mi industria?'
-];
+]
 
 const BizBot = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([initialMessage]);
-  const [inputValue, setInputValue] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [isMinimized, setIsMinimized] = useState(false)
+  const [messages, setMessages] = useState<Message[]>([initialMessage])
+  const [inputValue, setInputValue] = useState('')
+  const [isTyping, setIsTyping] = useState(false)
 
   const handleSendMessage = async () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim()) return
 
     const userMessage: Message = {
       id: Date.now().toString(),
       type: 'user',
       content: inputValue.trim(),
       timestamp: new Date()
-    };
+    }
 
-    setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
-    setIsTyping(true);
+    setMessages(prev => [...prev, userMessage])
+    setInputValue('')
+    setIsTyping(true)
 
     // Simular respuesta del bot (aquí se integraría la IA real)
     setTimeout(() => {
@@ -55,26 +55,26 @@ const BizBot = () => {
         type: 'bot',
         content: generateBotResponse(userMessage.content),
         timestamp: new Date()
-      };
-      setMessages(prev => [...prev, botResponse]);
-      setIsTyping(false);
-    }, 1500);
-  };
+      }
+      setMessages(prev => [...prev, botResponse])
+      setIsTyping(false)
+    }, 1500)
+  }
 
   const generateBotResponse = (userInput: string): string => {
     // Aquí se implementaría la lógica real de IA
     // Por ahora, usamos respuestas predefinidas basadas en palabras clave
     if (userInput.toLowerCase().includes('manufactura')) {
-      return 'Nuestras soluciones de manufactura incluyen sistemas MES, control de calidad, trazabilidad y optimización de producción. ¿Te gustaría conocer más sobre alguna área específica?';
+      return 'Nuestras soluciones de manufactura incluyen sistemas MES, control de calidad, trazabilidad y optimización de producción. ¿Te gustaría conocer más sobre alguna área específica?'
     }
     if (userInput.toLowerCase().includes('eficiencia')) {
-      return 'Podemos ayudarte a mejorar la eficiencia operativa mediante automatización, análisis de datos en tiempo real y optimización de procesos. ¿En qué área específica buscas mejorar la eficiencia?';
+      return 'Podemos ayudarte a mejorar la eficiencia operativa mediante automatización, análisis de datos en tiempo real y optimización de procesos. ¿En qué área específica buscas mejorar la eficiencia?'
     }
     if (userInput.toLowerCase().includes('tiempo') || userInput.toLowerCase().includes('implementar')) {
-      return 'La implementación típica toma entre 4-12 semanas, dependiendo de la complejidad del proyecto. Nuestro enfoque ágil nos permite entregar valor de forma incremental. ¿Te gustaría conocer más sobre nuestro proceso de implementación?';
+      return 'La implementación típica toma entre 4-12 semanas, dependiendo de la complejidad del proyecto. Nuestro enfoque ágil nos permite entregar valor de forma incremental. ¿Te gustaría conocer más sobre nuestro proceso de implementación?'
     }
-    return 'Entiendo tu consulta. Para poder ayudarte mejor, ¿podrías proporcionarme más detalles sobre tu industria y necesidades específicas?';
-  };
+    return 'Entiendo tu consulta. Para poder ayudarte mejor, ¿podrías proporcionarme más detalles sobre tu industria y necesidades específicas?'
+  }
 
   return (
     <>
@@ -148,8 +148,8 @@ const BizBot = () => {
                         <button
                           key={index}
                           onClick={() => {
-                            setInputValue(question);
-                            handleSendMessage();
+                            setInputValue(question)
+                            handleSendMessage()
                           }}
                           className="text-sm bg-bizflow-purple-50 text-bizflow-purple-700 px-3 py-1 rounded-full hover:bg-bizflow-purple-100 transition-colors"
                         >
@@ -186,7 +186,7 @@ const BizBot = () => {
         )}
       </AnimatePresence>
     </>
-  );
-};
+  )
+}
 
-export default BizBot; 
+export default BizBot
