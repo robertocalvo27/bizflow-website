@@ -115,40 +115,33 @@ const faqs = [
 
 const FaqSection = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-bizflow-blue-900 to-bizflow-purple-900 z-0"></div>
-
-      {/* Abstract shapes */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-bizflow-purple-800 opacity-20"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 rounded-full bg-bizflow-blue-700 opacity-20"></div>
-        <div className="absolute top-1/2 right-1/3 w-40 h-40 rounded-full bg-bizflow-purple-600 opacity-10"></div>
-      </div>
-
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-16 md:py-24 bg-white">
+      <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-bizflow-blue-900 to-bizflow-purple-900 bg-clip-text text-transparent">
               ¿Tiene estos desafíos en su operación?
             </h2>
-            <p className="text-lg md:text-xl text-bizflow-blue-100">
+            <p className="text-lg md:text-xl text-bizflow-blue-700">
               Nosotros los resolvemos
             </p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8">
+          <div className="rounded-2xl">
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-b border-bizflow-blue-800">
-                  <AccordionTrigger className="text-left">
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`} 
+                  className="border border-bizflow-blue-100 rounded-lg mb-4 overflow-hidden hover:border-bizflow-purple-400 transition-colors"
+                >
+                  <AccordionTrigger className="text-left px-6 py-4 hover:bg-bizflow-purple-50">
                     <div className="flex items-start gap-3 pr-8">
-                      <AlertTriangle className="h-5 w-5 text-bizflow-purple-400 shrink-0 mt-1" />
-                      <span className="text-white font-medium">{faq.question}</span>
+                      <AlertTriangle className="h-5 w-5 text-bizflow-purple-500 shrink-0 mt-1" />
+                      <span className="text-bizflow-blue-900 font-medium">{faq.question}</span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-bizflow-blue-100">
+                  <AccordionContent className="text-bizflow-blue-700 px-6 pb-4">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
