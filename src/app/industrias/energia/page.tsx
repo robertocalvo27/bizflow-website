@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import Hero from './components/Hero'
 import ProblemaSolucion from './components/ProblemaSolucion'
-import CrossSelling from '@/components/shared/CrossSelling'
-import CtaSection from '@/components/shared/CtaSection'
+import CrossSelling from '@/components/servicios/CrossSelling'
+import CtaSection from '@/components/servicios/CtaSection'
 
 export const metadata: Metadata = {
   title: 'Energía | Soluciones Digitales para la Industria Energética',
@@ -11,18 +11,18 @@ export const metadata: Metadata = {
 
 const serviciosRelacionados = [
   {
-    title: 'Producción',
-    description: 'Optimice sus procesos de generación y distribución energética con soluciones digitales inteligentes.',
+    titulo: 'Producción',
+    descripcion: 'Optimice sus procesos de generación y distribución energética con soluciones digitales inteligentes.',
     href: '/areas-funcionales/produccion'
   },
   {
-    title: 'Mantenimiento',
-    description: 'Implemente mantenimiento predictivo para maximizar la disponibilidad de sus activos energéticos.',
+    titulo: 'Mantenimiento',
+    descripcion: 'Implemente mantenimiento predictivo para maximizar la disponibilidad de sus activos energéticos.',
     href: '/areas-funcionales/mantenimiento'
   },
   {
-    title: 'Calidad',
-    description: 'Asegure el cumplimiento de estándares y regulaciones en sus operaciones energéticas.',
+    titulo: 'Calidad',
+    descripcion: 'Asegure el cumplimiento de estándares y regulaciones en sus operaciones energéticas.',
     href: '/areas-funcionales/calidad'
   }
 ]
@@ -33,11 +33,14 @@ const EnergiaPage = () => {
       <Hero />
       <ProblemaSolucion />
       <CrossSelling
-        title="Áreas Funcionales Relacionadas"
-        description="Explore nuestras soluciones específicas para cada área funcional de su empresa energética"
-        services={serviciosRelacionados}
+        titulo="Áreas Funcionales Relacionadas"
+        descripcion="Explore nuestras soluciones específicas para cada área funcional de su empresa energética"
+        servicios={serviciosRelacionados}
       />
-      <CtaSection />
+      <CtaSection
+        titulo="¿Listo para Transformar su Gestión Energética?"
+        subtitulo="Descubra cómo nuestras soluciones pueden ayudarle a optimizar su consumo energético y reducir costos operativos."
+      />
     </main>
   )
 }
