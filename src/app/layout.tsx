@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ErrorMonitoring from "@/components/ErrorMonitoring";
-import CookieBanner from "@/components/cookies/CookieBanner";
+import { CookieBanner } from "@/components/cookies/CookieBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
