@@ -1,12 +1,12 @@
 "use client"
 
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, BarChart3, Clock, Database, LayoutDashboard, Zap, Smartphone, Cloud, Server, Code2, Laptop, Settings } from 'lucide-react'
 import { Card } from '@/components/ui/card'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 
 interface Service {
   icon: React.ReactNode
@@ -21,15 +21,28 @@ interface ServiceCardProps {
 }
 
 const ServiceCard = ({ service, index }: ServiceCardProps) => {
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], [0, index * 20])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.02])
+  const cardRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(cardRef, { once: false, amount: 0.3 })
+  
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1.05, 0.95])
 
   return (
     <motion.div
-      style={{ y, scale }}
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.2 }}
+      ref={cardRef}
+      style={{ 
+        y, 
+        opacity,
+        scale,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s"
+      }}
+      whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
     >
       <Card className="p-6 hover:shadow-lg transition-shadow border-t-4 border-t-bizflow-blue-600 h-full flex flex-col">
         <div className="flex items-center mb-4">
@@ -49,6 +62,17 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
 }
 
 const ServicesSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 })
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const titleY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50])
+  
   const services: Service[] = [
     {
       icon: <Database className="h-6 w-6 text-bizflow-blue-600" />,
@@ -94,20 +118,28 @@ const ServicesSection = () => {
     }
   ]
 
+  const implementationRef = useRef<HTMLDivElement>(null)
+  const isImplementationInView = useInView(implementationRef, { once: false, amount: 0.3 })
+  
+  const { scrollYProgress: implementationScrollProgress } = useScroll({
+    target: implementationRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const implementationOpacity = useTransform(implementationScrollProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const implementationScale = useTransform(implementationScrollProgress, [0, 0.5, 1], [0.95, 1.02, 0.95])
+
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          style={{ opacity: titleOpacity, y: titleY }}
         >
-          <h2 className="section-title">
+          <h2 className="text-3xl md:text-4xl font-bold text-bizflow-blue-900 mb-6">
             Soluciones que transforman operaciones industriales
           </h2>
-          <p className="paragraph max-w-2xl mx-auto">
+          <p className="text-lg text-bizflow-gray-600 max-w-2xl mx-auto">
             Ayudamos a las empresas a abandonar Excel y sistemas heredados complejos por soluciones digitales ágiles que agilizan las operaciones y mejoran la toma de decisiones.
           </p>
         </motion.div>
@@ -119,38 +151,76 @@ const ServicesSection = () => {
         </div>
 
         {/* Implementación Rápida */}
-        <div className="bg-gradient-to-r from-bizflow-blue-900 to-bizflow-blue-800 rounded-xl overflow-hidden shadow-xl">
+        <motion.div 
+          ref={implementationRef}
+          className="bg-gradient-to-r from-bizflow-blue-900 to-bizflow-blue-800 rounded-xl overflow-hidden shadow-xl"
+          style={{ 
+            opacity: implementationOpacity,
+            scale: implementationScale
+          }}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="p-8 md:p-12 flex flex-col justify-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <motion.h3 
+                className="text-2xl md:text-3xl font-bold text-white mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isImplementationInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6 }}
+              >
                 Implementación en semanas, no años
-              </h3>
-              <p className="text-bizflow-blue-100 mb-6">
+              </motion.h3>
+              <motion.p 
+                className="text-bizflow-blue-100 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isImplementationInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
                 Nuestro enfoque ágil nos permite implementar soluciones en producción en semanas, no meses o años. Trabajamos con metodologías probadas para entregar valor de manera incremental, minimizando riesgos y maximizando el retorno de inversión.
-              </p>
+              </motion.p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div className="bg-bizflow-blue-800/70 p-4 rounded-lg flex items-start">
+                <motion.div 
+                  className="bg-bizflow-blue-800/70 p-4 rounded-lg flex items-start"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isImplementationInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
                   <Clock className="h-6 w-6 text-bizflow-blue-200 mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="text-white font-medium mb-1">MVP en 4-6 semanas</h4>
                     <p className="text-bizflow-blue-200 text-sm">Primeros resultados tangibles rápidamente</p>
                   </div>
-                </div>
-                <div className="bg-bizflow-blue-800/70 p-4 rounded-lg flex items-start">
+                </motion.div>
+                <motion.div 
+                  className="bg-bizflow-blue-800/70 p-4 rounded-lg flex items-start"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isImplementationInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
                   <Clock className="h-6 w-6 text-bizflow-blue-200 mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="text-white font-medium mb-1">ROI en 1-3 meses</h4>
                     <p className="text-bizflow-blue-200 text-sm">Retorno de inversión medible a corto plazo</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
-              <Button asChild className="bg-bizflow-purple-600 hover:bg-bizflow-purple-700 text-white inline-flex self-start">
-                <Link href="/metodologia">
-                  Conocer nuestra metodología <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isImplementationInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Button asChild className="bg-bizflow-purple-600 hover:bg-bizflow-purple-700 text-white inline-flex self-start">
+                  <Link href="/metodologia">
+                    Conocer nuestra metodología <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
-            <div className="relative lg:h-auto">
+            <motion.div 
+              className="relative lg:h-auto"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isImplementationInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <Image
                 src="/images/agile-implementation.jpg"
                 alt="Proceso de implementación ágil y transformación digital"
@@ -160,9 +230,9 @@ const ServicesSection = () => {
                 crossOrigin="anonymous"
               />
               <div className="absolute inset-0 bg-gradient-to-l from-transparent to-bizflow-blue-900/50 lg:bg-gradient-to-r"></div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

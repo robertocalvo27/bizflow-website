@@ -95,6 +95,10 @@ const Hero = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, -150])
   const y2 = useTransform(scrollY, [0, 500], [0, -100])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
+  const scale = useTransform(scrollY, [0, 300], [1, 0.9])
+  const textY = useTransform(scrollY, [0, 300], [0, -50])
+  const imageScale = useTransform(scrollY, [0, 300], [1, 1.1])
+  const imageY = useTransform(scrollY, [0, 300], [0, 30])
 
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
@@ -113,27 +117,51 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-bizflow-blue-900 mb-6">
+          <motion.div 
+            className="text-center lg:text-left"
+            style={{ y: textY }}
+          >
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-bizflow-blue-900 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               Operaciones industriales más{" "}
               <br className="hidden lg:block" />
               <RotatingWords />
-            </h1>
-            <p className="text-lg md:text-xl text-bizflow-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
+            </motion.h1>
+            <motion.p 
+              className="text-lg md:text-xl text-bizflow-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               Transformamos procesos industriales complejos en soluciones digitales ágiles. 
               Implementación en semanas, no años.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            </motion.p>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <AIConsultaModal />
               <Button asChild variant="outline" className="border-bizflow-blue-600 text-bizflow-blue-600 hover:bg-bizflow-blue-50">
                 <Link href="/servicios">
                   Explorar Soluciones <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="relative h-[400px] lg:h-[600px]">
+          <motion.div 
+            className="relative h-[400px] lg:h-[600px]"
+            style={{ scale: imageScale, y: imageY }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <Image
               src="/images/hero-industrial-automation.jpg"
               alt="Transformación digital industrial"
@@ -143,7 +171,30 @@ const Hero = () => {
               crossOrigin="anonymous"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-bizflow-blue-900/20 to-transparent rounded-2xl"></div>
-          </div>
+            
+            {/* Floating card with parallax */}
+            <motion.div 
+              className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl max-w-xs"
+              style={{ y: useTransform(scrollY, [0, 300], [0, -20]) }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <div className="flex items-start space-x-4">
+                <div className="bg-bizflow-green-100 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-bizflow-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-bizflow-blue-900 mb-1">Implementación en 4-6 semanas</h3>
+                  <p className="text-sm text-bizflow-gray-600">
+                    Resultados tangibles en tiempo récord
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
