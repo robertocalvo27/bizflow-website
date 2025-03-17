@@ -117,8 +117,8 @@ const ServicesSection = () => {
             </div>
             <div className="relative lg:h-auto">
               <Image
-                src="/images/digital-transformation-process.jpg"
-                alt="Transformación digital ágil en semanas"
+                src="/images/agile-implementation.jpg"
+                alt="Proceso de implementación ágil y transformación digital"
                 width={600}
                 height={600}
                 className="w-full h-full object-cover"
