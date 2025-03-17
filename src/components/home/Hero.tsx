@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const RotatingWords = () => {
@@ -47,6 +47,7 @@ const AIConsultaModal = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] bg-gradient-to-br from-bizflow-blue-900 to-bizflow-purple-900 text-white p-8">
+        <DialogTitle className="sr-only">Formulario de Consulta Digital</DialogTitle>
         <div className="space-y-6">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-bizflow-purple-500 rounded-full flex items-center justify-center">
