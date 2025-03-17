@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo con gradiente -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A192F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#112240;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)" />
+  
+  <!-- Gráfico de línea predictivo -->
+  <g transform="translate(100,100)">
+    <path d="M0,300 Q150,250 300,200 T600,100" fill="none" stroke="#64FFDA" stroke-width="2">
+      <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="3s" repeatCount="indefinite" />
+    </path>
+    <!-- Puntos de datos -->
+    <circle cx="0" cy="300" r="4" fill="#64FFDA" />
+    <circle cx="150" cy="250" r="4" fill="#64FFDA" />
+    <circle cx="300" cy="200" r="4" fill="#64FFDA" />
+    <circle cx="450" cy="150" r="4" fill="#64FFDA" />
+    <circle cx="600" cy="100" r="4" fill="#64FFDA" />
+  </g>
+  
+  <!-- Engranajes -->
+  <g transform="translate(400,300)">
+    <g id="gear1">
+      <circle cx="0" cy="0" r="40" fill="none" stroke="#64FFDA" stroke-width="2"/>
+      <g stroke="#64FFDA" stroke-width="4">
+        <line x1="-40" y1="0" x2="-50" y2="0" />
+        <line x1="40" y1="0" x2="50" y2="0" />
+        <line x1="0" y1="-40" x2="0" y2="-50" />
+        <line x1="0" y1="40" x2="0" y2="50" />
+        <line x1="-28" y1="-28" x2="-35" y2="-35" />
+        <line x1="28" y1="-28" x2="35" y2="-35" />
+        <line x1="-28" y1="28" x2="-35" y2="35" />
+        <line x1="28" y1="28" x2="35" y2="35" />
+      </g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite" />
+    </g>
+  </g>
+  
+  <!-- Indicadores de estado -->
+  <g transform="translate(650,300)">
+    <rect x="0" y="0" width="100" height="30" rx="5" fill="none" stroke="#64FFDA" stroke-width="2" />
+    <text x="50" y="20" fill="#64FFDA" font-family="monospace" font-size="14" text-anchor="middle">OPTIMAL</text>
+  </g>
+</svg> 
