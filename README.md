@@ -23,8 +23,37 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Project Structure
 
 - `/src/components` - React components organized by feature/section
+  - `/ui` - Reusable UI components
+  - `/modals` - Modal components like ScheduleMeetingModal
+  - `/servicios` - Shared components for service pages (CrossSelling, CtaSection)
 - `/src/app` - Next.js App Router structure
+  - `/servicios` - Service pages
+    - `/software-operativo` - Software Operativo service
+    - `/integracion-sistemas` - Integración de Sistemas service
+    - `/automatizacion` - Automatización Industrial service
+    - `/analitica-industrial` - Analítica Industrial service
+    - `/software-as-a-service` - Software as a Service
+    - `/infraestructura-soporte` - Infraestructura y Soporte service
 - `/public` - Static assets including images and icons
+  - `/images` - Website images and service-specific assets
+
+## Service Pages Structure
+
+Each service page follows a consistent structure:
+
+```
+/servicios/[service-name]/
+├── page.tsx           # Main service page
+└── components/        # Service-specific components
+    ├── Hero.tsx      # Hero section with service introduction
+    └── ProblemaSolucion.tsx  # Problems and solutions section
+```
+
+### Shared Components
+
+- `CrossSelling`: Displays related services
+- `CtaSection`: Call-to-action section for scheduling meetings
+- `ScheduleMeetingModal`: Modal for scheduling consultations
 
 ## Common Issues and Solutions
 
@@ -56,6 +85,7 @@ This project previously encountered a hydration error caused by mismatches betwe
    - TrustSection.tsx
    - ServicesSection.tsx
    - CasesSection.tsx
+   - All service-specific components
 
 3. When adding new Image components, always include the `crossOrigin="anonymous"` attribute to prevent hydration errors.
 
@@ -64,6 +94,14 @@ This project previously encountered a hydration error caused by mismatches betwe
 ### Module Type Warning
 
 Another issue fixed was the warning about Next.js config module type. This was resolved by adding `"type": "module"` to `package.json`.
+
+## Styling
+
+The project uses:
+- Tailwind CSS for styling
+- Custom color scheme with Bizflow brand colors
+- Framer Motion for animations
+- Lucide icons for consistent iconography
 
 ## Learn More
 

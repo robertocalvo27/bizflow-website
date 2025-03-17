@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Hero from './components/Hero'
 import ProblemaSolucion from './components/ProblemaSolucion'
-import CrossSelling from '@/components/shared/CrossSelling'
-import CtaSection from '@/components/shared/CtaSection'
+import CrossSelling from '@/components/servicios/CrossSelling'
+import CtaSection from '@/components/servicios/CtaSection'
 
 export const metadata: Metadata = {
   title: 'Soluciones Digitales para Logística | Bizflow',
@@ -39,9 +39,7 @@ export default function LogisticaPage() {
       />
       <CtaSection
         titulo="¿Listo para optimizar su logística?"
-        descripcion="Solicite una demostración personalizada y descubra cómo podemos transformar su operación logística."
-        ctaText="Solicitar Demo"
-        ctaHref="/contacto"
+        subtitulo="Solicite una demostración personalizada y descubra cómo podemos transformar su operación logística."
       />
     </main>
   )

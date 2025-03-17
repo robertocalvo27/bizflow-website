@@ -5,11 +5,16 @@ import CrossSelling from "@/components/servicios/CrossSelling"
 import CtaSection from "@/components/servicios/CtaSection"
 
 export const metadata: Metadata = {
-  title: "Mantenimiento Industrial Digital | BizFlow",
-  description: "Maximice la disponibilidad de sus activos con nuestras soluciones digitales de mantenimiento predictivo. Reduzca costos y prevenga fallas con IA e IoT.",
+  title: "Manufactura Digital e Inteligente | BizFlow",
+  description: "Transforme su planta manufacturera con soluciones digitales que optimizan la producción, reducen costos y mejoran la calidad. Impulse su competitividad con Industria 4.0.",
 }
 
 const serviciosRelacionados = [
+  {
+    titulo: "Mantenimiento",
+    descripcion: "Maximice la disponibilidad de sus activos con mantenimiento predictivo.",
+    href: "/areas-funcionales/mantenimiento"
+  },
   {
     titulo: "Producción",
     descripcion: "Optimice sus procesos productivos con soluciones digitales inteligentes.",
@@ -19,15 +24,10 @@ const serviciosRelacionados = [
     titulo: "Logística",
     descripcion: "Gestione su cadena de suministro con visibilidad en tiempo real.",
     href: "/areas-funcionales/logistica"
-  },
-  {
-    titulo: "Seguridad",
-    descripcion: "Proteja sus operaciones con sistemas de seguridad industrial inteligentes.",
-    href: "/areas-funcionales/seguridad"
   }
 ]
 
-const MantenimientoPage = () => {
+const ManufacturaPage = () => {
   return (
     <main>
       <Hero />
@@ -38,11 +38,11 @@ const MantenimientoPage = () => {
         servicios={serviciosRelacionados}
       />
       <CtaSection
-        titulo="¿Listo para optimizar su mantenimiento?"
-        subtitulo="Comience hoy mismo a transformar su gestión de mantenimiento con nuestras soluciones digitales"
+        titulo="¿Listo para transformar su manufactura?"
+        subtitulo="Comience hoy mismo a digitalizar y optimizar sus operaciones manufactureras"
       />
     </main>
   )
 }
 
-export default MantenimientoPage 
+export default ManufacturaPage 
