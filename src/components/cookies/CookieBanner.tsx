@@ -3,7 +3,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+<<<<<<< HEAD
 import { useCookieConsent } from '@/hooks/useCookieConsent'
+=======
+import { useCookieConsent } from '../../hooks/useCookieConsent'
+>>>>>>> df402362e5c128394b3403b9b649bc15aba8e374
 
 export const CookieBanner = () => {
   const { consent, acceptCookies, rejectCookies } = useCookieConsent()

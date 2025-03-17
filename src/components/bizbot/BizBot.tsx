@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageSquare, X, Send, Minimize2, Maximize2 } from 'lucide-react'
-import BizBotMessage from './BizBotMessage'
-import BizBotTypingIndicator from './BizBotTypingIndicator'
+import BizBotMessage from '@/components/bizbot/BizBotMessage'
+import BizBotTypingIndicator from '@/components/bizbot/BizBotTypingIndicator'
 
 interface Message {
   id: string
@@ -189,4 +189,4 @@ const BizBot = () => {
   )
 }
 
-export default BizBot 
+export default BizBot
