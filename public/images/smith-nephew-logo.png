@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server Error</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="/assets/alchemy-core.css" />
+</head>
+<body>
+    <main>
+        <article class="error-page">
+            <div class="error-page__box">
+                <img src="/images/Logo.svg" alt="Smith+Nephew" />
+                <h2>404 Server Error</h2>
+                <div class="paragraphs">
+                    <p>Unfortunately we're having trouble loading the page you are looking for.</p>
+                    <p>Please try again in a while or <a href="/">return to homepage</a></p>
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
