@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 
 const RotatingWords = () => {
   const words = ["ágiles", "inteligentes", "robustas"]
@@ -89,10 +89,27 @@ const AIConsultaModal = () => {
 }
 
 const Hero = () => {
+  const { scrollY } = useScroll()
+  
+  // Parallax transformations
+  const y1 = useTransform(scrollY, [0, 500], [0, -150])
+  const y2 = useTransform(scrollY, [0, 500], [0, -100])
+  const opacity = useTransform(scrollY, [0, 300], [1, 0])
+
   return (
-    <section className="relative min-h-screen flex items-center pt-16">
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-bizflow-blue-50 to-white z-0"></div>
+
+      {/* Decorative elements with parallax */}
+      <motion.div 
+        className="absolute top-20 right-10 w-64 h-64 rounded-full bg-bizflow-purple-200/30 blur-3xl z-0"
+        style={{ y: y1, opacity }}
+      />
+      <motion.div 
+        className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-bizflow-blue-200/20 blur-3xl z-0"
+        style={{ y: y2, opacity }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
