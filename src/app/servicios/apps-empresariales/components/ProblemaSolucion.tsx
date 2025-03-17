@@ -134,14 +134,24 @@ const ProblemaSolucion = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-bizflow-gray-50 rounded-lg p-6 mt-8"
             >
-              <div className="flex items-start space-x-4">
-                <div className="relative w-16 h-16 flex-shrink-0">
+              <div className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-6">
+                <div className="relative w-full md:w-48 h-32 flex-shrink-0 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/smith-nephew-logo.png"
-                    alt="Logo de Smith & Nephew"
+                    src="/images/smith-nephew-medical.jpg"
+                    alt="Instalaciones médicas de Smith & Nephew"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute bottom-3 left-3">
+                    <Image
+                      src="/images/smith-nephew-logo.png"
+                      alt="Logo de Smith & Nephew"
+                      width={80}
+                      height={24}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-bizflow-blue-900 mb-2">
@@ -150,7 +160,7 @@ const ProblemaSolucion = () => {
                   <p className="text-bizflow-gray-600 mb-4">
                     Desarrollamos una app de trazabilidad que automatiza el seguimiento de 50,000 lotes/año, cumpliendo con regulaciones FDA y reduciendo errores de documentación en un 95%.
                   </p>
-                  <div className="flex items-center text-bizflow-blue-600 font-medium">
+                  <div className="flex items-center text-bizflow-blue-600 font-medium cursor-pointer hover:text-bizflow-blue-700 transition-colors">
                     Ver caso completo
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </div>
