@@ -73,7 +73,7 @@ const blogPosts = [
     authorImage: '/images/team/carlos-rodriguez.jpg',
     date: '15 Mar 2023',
     category: 'Transformación Digital',
-    image: '/images/blog/digital-transformation.jpg',
+    image: '/images/blog/digital-transformation.svg',
     slug: 'transformacion-digital-industria-4-0'
   }
 ]
@@ -87,7 +87,7 @@ const relatedPosts = [
     author: 'María González',
     date: '28 Feb 2023',
     category: 'IoT Industrial',
-    image: '/images/blog/industrial-iot.jpg',
+    image: '/images/blog/industrial-iot.svg',
     slug: 'implementacion-iot-entornos-industriales'
   },
   {
@@ -97,7 +97,7 @@ const relatedPosts = [
     author: 'Ana Martínez',
     date: '5 Feb 2023',
     category: 'Automatización',
-    image: '/images/blog/automation.jpg',
+    image: '/images/blog/automation.svg',
     slug: 'automatizacion-procesos-industriales'
   },
   {
@@ -107,7 +107,7 @@ const relatedPosts = [
     author: 'Laura Gómez',
     date: '10 Ene 2023',
     category: 'Analítica',
-    image: '/images/blog/data-analytics.jpg',
+    image: '/images/blog/data-analytics.svg',
     slug: 'analitica-datos-optimizar-operaciones'
   }
 ]
