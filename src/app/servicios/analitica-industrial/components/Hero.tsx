@@ -25,34 +25,34 @@ const Hero = () => {
             className="text-center lg:text-left"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-bizflow-blue-900 mb-6">
-              Analítica Industrial que transforma datos en decisiones
+              Analítica Industrial para Decisiones Inteligentes
             </h1>
             <p className="text-xl text-bizflow-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Convertimos sus datos operativos en insights accionables. Nuestros clientes mejoran su eficiencia operacional hasta un 35% con analítica predictiva y dashboards en tiempo real.
+              Transforme sus datos operativos en insights accionables. Dashboards en tiempo real, reportes automatizados y análisis predictivo para optimizar su operación.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <ScheduleMeetingModal>
                 <Button size="lg" className="bg-bizflow-purple-600 hover:bg-bizflow-purple-700 text-white">
-                  Hablemos de sus datos <ArrowRight className="ml-2 h-4 w-4" />
+                  Potencie sus datos <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </ScheduleMeetingModal>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-start space-x-2">
                 <CheckCircle2 className="h-5 w-5 text-bizflow-green-500 flex-shrink-0 mt-1" />
-                <p className="text-bizflow-gray-700">Implementación en 2-3 semanas</p>
+                <p className="text-bizflow-gray-700">Dashboards en tiempo real</p>
               </div>
               <div className="flex items-start space-x-2">
                 <CheckCircle2 className="h-5 w-5 text-bizflow-green-500 flex-shrink-0 mt-1" />
-                <p className="text-bizflow-gray-700">Soporte 24/7</p>
+                <p className="text-bizflow-gray-700">Análisis predictivo</p>
               </div>
               <div className="flex items-start space-x-2">
                 <CheckCircle2 className="h-5 w-5 text-bizflow-green-500 flex-shrink-0 mt-1" />
-                <p className="text-bizflow-gray-700">ROI en 2-4 meses</p>
+                <p className="text-bizflow-gray-700">KPIs personalizados</p>
               </div>
               <div className="flex items-start space-x-2">
                 <CheckCircle2 className="h-5 w-5 text-bizflow-green-500 flex-shrink-0 mt-1" />
-                <p className="text-bizflow-gray-700">Expertos en minería de datos</p>
+                <p className="text-bizflow-gray-700">Reportes automatizados</p>
               </div>
             </div>
           </motion.div>
@@ -65,7 +65,7 @@ const Hero = () => {
           >
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/analitica-industrial-dashboard.png"
+                src="/images/industrial-analytics-dashboard.png"
                 alt="Dashboard de Analítica Industrial"
                 fill
                 className="object-cover"
@@ -80,9 +80,9 @@ const Hero = () => {
                   <CheckCircle2 className="h-6 w-6 text-bizflow-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-bizflow-blue-900 mb-1">Nuestros analistas tienen experiencia en su industria</h3>
+                  <h3 className="font-bold text-bizflow-blue-900 mb-1">Expertos en Analítica</h3>
                   <p className="text-sm text-bizflow-gray-600">
-                    Entendemos sus KPIs porque hemos trabajado con empresas similares
+                    Más de 1 millón de datos procesados diariamente
                   </p>
                 </div>
               </div>

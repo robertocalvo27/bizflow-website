@@ -1,30 +1,30 @@
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 import Hero from './components/Hero'
 import ProblemaSolucion from './components/ProblemaSolucion'
-import CrossSelling from '@/components/servicios/CrossSelling'
-import CtaSection from '@/components/servicios/CtaSection'
+import CrossSelling from '../../../components/servicios/CrossSelling'
+import CtaSection from '../../../components/servicios/CtaSection'
 
 export const metadata: Metadata = {
   title: 'Analítica Industrial | Bizflow',
-  description: 'Transforme sus datos operativos en decisiones estratégicas con nuestra plataforma de analítica industrial. Mejore la eficiencia y reduzca costos con insights en tiempo real.',
+  description: 'Transforme sus datos operativos en insights accionables con nuestra solución de analítica industrial. Dashboards en tiempo real, análisis predictivo y KPIs personalizados.',
 }
 
 const serviciosRelacionados = [
   {
-    titulo: "Software Operativo",
-    descripcion: "Automatice sus procesos operativos con software especializado para su industria.",
-    href: "/servicios/software-operativo"
+    titulo: 'Software Operativo',
+    descripcion: 'Optimice sus procesos con software especializado para la industria.',
+    href: '/servicios/software-operativo',
   },
   {
-    titulo: "Apps Empresariales",
-    descripcion: "Desarrollamos aplicaciones que digitalizan sus procesos críticos.",
-    href: "/servicios/apps-empresariales"
+    titulo: 'Apps Empresariales',
+    descripcion: 'Desarrollamos aplicaciones a medida para sus necesidades específicas.',
+    href: '/servicios/apps-empresariales',
   },
   {
-    titulo: "Consultoría Digital",
-    descripcion: "Asesoramiento experto para optimizar sus procesos y tecnología.",
-    href: "/servicios/consultoria-digital"
-  }
+    titulo: 'Software as a Service',
+    descripcion: 'Transforme su software en una plataforma SaaS escalable y rentable.',
+    href: '/servicios/software-as-a-service',
+  },
 ]
 
 export default function AnaliticaIndustrialPage() {
@@ -32,14 +32,14 @@ export default function AnaliticaIndustrialPage() {
     <main>
       <Hero />
       <ProblemaSolucion />
-      <CrossSelling 
+      <CrossSelling
         titulo="Servicios Relacionados"
-        descripcion="Descubra cómo nuestras otras soluciones pueden complementar su transformación digital"
+        descripcion="Descubra cómo nuestros servicios se complementan para potenciar su transformación digital"
         servicios={serviciosRelacionados}
       />
-      <CtaSection 
-        titulo="¿Listo para tomar decisiones basadas en datos?"
-        subtitulo="Agende una llamada con nuestros expertos y descubra cómo podemos ayudarle a optimizar su operación con analítica avanzada."
+      <CtaSection
+        titulo="¿Listo para potenciar sus datos?"
+        subtitulo="Agende una llamada con nuestros expertos en analítica industrial"
       />
     </main>
   )
