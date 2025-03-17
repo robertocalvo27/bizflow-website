@@ -103,7 +103,7 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/kimberly-clark-costa-rica.jpg"
+                    src="/images/kimberly-clark-production.jpg"
                     alt="Planta de producción Kimberly Clark Costa Rica"
                     fill
                     className="object-cover"
@@ -135,7 +135,7 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/ferreyros-caterpillar.jpg"
+                    src="/images/ferreyros-maintenance.jpg"
                     alt="Maquinaria Caterpillar distribuida por Ferreyros"
                     fill
                     className="object-cover"
@@ -167,7 +167,7 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/aceros-arequipa-planta.jpg"
+                    src="/images/aceros-arequipa-steel.jpg"
                     alt="Planta industrial Aceros Arequipa"
                     fill
                     className="object-cover"
@@ -203,7 +203,7 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/antamina-operaciones.jpg"
+                    src="/images/antamina-mining.jpg"
                     alt="Operaciones mineras Antamina"
                     fill
                     className="object-cover"
