@@ -32,10 +32,12 @@ import {
   Award,
   Heart,
   Users2,
-  GraduationCap
+  GraduationCap,
+  Sparkles
 } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { motion, AnimatePresence } from 'framer-motion'
+import RequestDemoModal from '@/components/modals/RequestDemoModal'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -281,21 +283,14 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Call to Action */}
+        {/* Botones de acción */}
         <div className="hidden lg:flex items-center space-x-4">
-          <Button 
-            asChild 
-            variant="outline" 
-            className="border-bizflow-blue-600 text-bizflow-blue-600 hover:bg-bizflow-blue-50 transition-all duration-300"
-          >
-            <Link href="/contacto">Contacto</Link>
-          </Button>
-          <Button 
-            asChild 
-            className="bg-bizflow-blue-600 hover:bg-bizflow-blue-700 text-white shadow-lg hover:shadow-bizflow-blue-200/50 transition-all duration-300"
-          >
-            <Link href="/demo">Solicitar Demo</Link>
-          </Button>
+          <Link href="/contacto">
+            <Button variant="outline" size="lg" className="text-bizflow-blue-700 border-bizflow-blue-200 hover:bg-bizflow-blue-50">
+              Contacto
+            </Button>
+          </Link>
+          <RequestDemoModal />
         </div>
 
         {/* Mobile Menu */}
