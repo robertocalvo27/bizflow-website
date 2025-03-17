@@ -1,6 +1,12 @@
 import React from 'react'
+import { Metadata } from 'next'
 
-const ServiciosPage = () => {
+export const metadata: Metadata = {
+  title: 'Servicios | Bizflow - Software Industrial para Operaciones Ágiles',
+  description: 'Descubre nuestras soluciones de software industrial: desde aplicaciones operativas hasta analítica avanzada e integración de sistemas.',
+}
+
+export default function ServiciosPage() {
   return (
     <main className="flex min-h-screen flex-col">
       <section className="py-24 md:py-32">
@@ -19,6 +25,4 @@ const ServiciosPage = () => {
       </section>
     </main>
   )
-}
-
-export default ServiciosPage 
+} 
