@@ -20,6 +20,10 @@ interface ServiceCardProps {
   index: number
 }
 
+interface ServicesSectionProps {
+  showAllServices?: boolean
+}
+
 const ServiceCard = ({ service, index }: ServiceCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardRef, { once: false, amount: 0.3 })
@@ -61,7 +65,7 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
   )
 }
 
-const ServicesSection = () => {
+const ServicesSection = ({ showAllServices = false }: ServicesSectionProps) => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 })
   
@@ -144,9 +148,11 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services
+            .slice(0, showAllServices ? undefined : 3)
+            .map((service, index) => (
+              <ServiceCard key={index} service={service} index={index} />
           ))}
         </div>
 
