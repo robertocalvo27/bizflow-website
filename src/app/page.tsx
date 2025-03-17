@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       <Hero />
-      <ServicesSection />
+      <ServicesSection showAllServices={true} />
       <TrustSection />
       <CasesSection />
       <BlogSection />
