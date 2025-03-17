@@ -27,6 +27,16 @@ interface Message {
   content: string
 }
 
+const timeSlots = [
+  '09:00', '10:00', '11:00', '14:00', '15:00', '16:00'
+]
+
+const platforms = [
+  { id: 'meet', name: 'Google Meet', icon: '🎯' },
+  { id: 'teams', name: 'Microsoft Teams', icon: '👥' },
+  { id: 'zoom', name: 'Zoom', icon: '🎥' },
+]
+
 const RequestDemoModal = () => {
   const [step, setStep] = useState(1)
   const [name, setName] = useState('')
@@ -44,6 +54,10 @@ const RequestDemoModal = () => {
   ])
   const [currentMessage, setCurrentMessage] = useState('')
   const chatContainerRef = useRef<HTMLDivElement>(null)
+  const [selectedDate, setSelectedDate] = useState('')
+  const [selectedTime, setSelectedTime] = useState('')
+  const [selectedPlatform, setSelectedPlatform] = useState('')
+  const [isConfirmed, setIsConfirmed] = useState(false)
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -89,8 +103,9 @@ const RequestDemoModal = () => {
     setStep(3)
   }
 
-  const scheduleDemo = () => {
-    // Aquí iría la lógica para redirigir al calendario o abrir el modal de agenda
+  const scheduleDemo = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Aquí iría la lógica para procesar la reunión
     console.log('Scheduling demo with data:', {
       name,
       email,
@@ -99,8 +114,12 @@ const RequestDemoModal = () => {
       position,
       whatsapp,
       country,
+      selectedDate,
+      selectedTime,
+      selectedPlatform,
       conversation: messages
     })
+    setIsConfirmed(true)
   }
 
   return (
@@ -111,21 +130,21 @@ const RequestDemoModal = () => {
           Solicitar Demo
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-gradient-to-br from-bizflow-blue-900 to-bizflow-purple-900 text-white p-8">
-        <DialogTitle className="text-2xl font-bold flex items-center gap-2 mb-6">
+      <DialogContent className="sm:max-w-[600px] bg-white text-bizflow-gray-900 p-8">
+        <DialogTitle className="text-2xl font-bold flex items-center gap-2 mb-6 text-bizflow-blue-900">
           {step === 1 ? (
             <>
-              <Bot className="h-6 w-6" />
+              <Bot className="h-6 w-6 text-bizflow-blue-600" />
               Cuéntanos sobre tu desafío
             </>
           ) : step === 2 ? (
             <>
-              <User className="h-6 w-6" />
+              <User className="h-6 w-6 text-bizflow-blue-600" />
               Completa tu información
             </>
           ) : (
             <>
-              <Calendar className="h-6 w-6" />
+              <Calendar className="h-6 w-6 text-bizflow-blue-600" />
               ¡Último paso!
             </>
           )}
@@ -135,7 +154,7 @@ const RequestDemoModal = () => {
           <div className="space-y-4">
             <div
               ref={chatContainerRef}
-              className="h-[300px] overflow-y-auto space-y-4 bg-white/5 backdrop-blur-sm rounded-lg p-4"
+              className="h-[300px] overflow-y-auto space-y-4 bg-gray-50 rounded-lg p-4"
             >
               {messages.map((message, index) => (
                 <div
@@ -147,8 +166,8 @@ const RequestDemoModal = () => {
                   <div
                     className={`p-3 rounded-lg max-w-[80%] ${
                       message.role === 'assistant'
-                        ? 'bg-bizflow-purple-500/20 text-white'
-                        : 'bg-white/10 text-white'
+                        ? 'bg-bizflow-blue-50 text-bizflow-gray-900'
+                        : 'bg-bizflow-blue-600 text-white'
                     }`}
                   >
                     {message.content}
@@ -163,13 +182,13 @@ const RequestDemoModal = () => {
                 value={currentMessage}
                 onChange={(e) => setCurrentMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                className="flex-1 bg-white/10 border border-bizflow-purple-500/30 rounded-lg p-3 text-white placeholder-bizflow-blue-300"
+                className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-3 text-bizflow-gray-900 placeholder-gray-400"
                 placeholder="Describe tu desafío..."
               />
               <Button
                 type="button"
                 onClick={handleSendMessage}
-                className="bg-bizflow-purple-600 hover:bg-bizflow-purple-700"
+                className="bg-bizflow-blue-600 hover:bg-bizflow-blue-700"
               >
                 <Send className="h-4 w-4" />
               </Button>
@@ -179,9 +198,9 @@ const RequestDemoModal = () => {
 
         {step === 2 && (
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-bizflow-purple-400" />
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-bizflow-blue-900">
+                <Sparkles className="h-5 w-5 text-bizflow-blue-600" />
                 Datos para personalizar tu demo
               </h3>
               <div className="grid grid-cols-2 gap-3 mb-6">
@@ -192,8 +211,8 @@ const RequestDemoModal = () => {
                     onClick={() => setIndustry(ind.id)}
                     className={`flex items-center gap-2 p-4 rounded-lg border transition-all ${
                       industry === ind.id
-                        ? 'border-bizflow-purple-500 bg-bizflow-purple-500/20'
-                        : 'border-bizflow-purple-500/30 hover:border-bizflow-purple-500/50'
+                        ? 'border-bizflow-blue-500 bg-bizflow-blue-500/20'
+                        : 'border-bizflow-blue-500/30 hover:border-bizflow-blue-500/50'
                     }`}
                   >
                     <span className="text-2xl">{ind.icon}</span>
@@ -210,7 +229,7 @@ const RequestDemoModal = () => {
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white/10 border border-bizflow-purple-500/30 rounded-lg p-3 text-white placeholder-bizflow-blue-300"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-bizflow-gray-900 placeholder-gray-400"
                       placeholder="Nombre completo"
                       required
                     />
@@ -221,7 +240,7 @@ const RequestDemoModal = () => {
                       type="text"
                       value={position}
                       onChange={(e) => setPosition(e.target.value)}
-                      className="w-full bg-white/10 border border-bizflow-purple-500/30 rounded-lg p-3 text-white placeholder-bizflow-blue-300"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-bizflow-gray-900 placeholder-gray-400"
                       placeholder="Tu cargo en la empresa"
                       required
                     />
@@ -234,7 +253,7 @@ const RequestDemoModal = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white/10 border border-bizflow-purple-500/30 rounded-lg p-3 text-white placeholder-bizflow-blue-300"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-bizflow-gray-900 placeholder-gray-400"
                     placeholder="tu@empresa.com"
                     required
                   />
@@ -246,7 +265,7 @@ const RequestDemoModal = () => {
                     type="tel"
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
-                    className="w-full bg-white/10 border border-bizflow-purple-500/30 rounded-lg p-3 text-white placeholder-bizflow-blue-300"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-bizflow-gray-900 placeholder-gray-400"
                     placeholder="+51 999 999 999"
                     required
                   />
@@ -258,7 +277,7 @@ const RequestDemoModal = () => {
                     <select
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
-                      className="w-full bg-white/10 border border-bizflow-purple-500/30 rounded-lg p-3 text-white"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-bizflow-gray-900"
                       required
                     >
                       <option value="">Selecciona tu país</option>
@@ -275,7 +294,7 @@ const RequestDemoModal = () => {
                       type="text"
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
-                      className="w-full bg-white/10 border border-bizflow-purple-500/30 rounded-lg p-3 text-white placeholder-bizflow-blue-300"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-bizflow-gray-900 placeholder-gray-400"
                       placeholder="Nombre de tu empresa"
                       required
                     />
@@ -289,11 +308,11 @@ const RequestDemoModal = () => {
                 type="button"
                 variant="outline"
                 onClick={() => setStep(1)}
-                className="border-bizflow-purple-400 text-bizflow-purple-400 hover:bg-bizflow-purple-400/10"
+                className="border-bizflow-blue-200 text-bizflow-blue-700 hover:bg-bizflow-blue-50"
               >
                 Atrás
               </Button>
-              <Button type="submit" className="bg-bizflow-purple-600 hover:bg-bizflow-purple-700">
+              <Button type="submit" className="bg-bizflow-blue-600 hover:bg-bizflow-blue-700 text-white">
                 Continuar
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -303,34 +322,127 @@ const RequestDemoModal = () => {
 
         {step === 3 && (
           <div className="space-y-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-bizflow-purple-500/20 rounded-full flex items-center justify-center">
-                <Sparkles className="h-8 w-8 text-bizflow-purple-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">¡Excelente {name}!</h3>
-              <p className="text-bizflow-blue-200 mb-6">
-                Hemos analizado tu caso y estamos listos para mostrarte cómo Bizflow puede ayudarte.
-                El siguiente paso es agendar una demo personalizada con uno de nuestros expertos.
-              </p>
-              <Button
-                onClick={scheduleDemo}
-                className="bg-bizflow-purple-600 hover:bg-bizflow-purple-700 w-full"
-              >
-                <Calendar className="mr-2 h-4 w-4" />
-                Agendar Demo Personalizada
-              </Button>
-            </div>
+            {!isConfirmed ? (
+              <div className="bg-gray-50 rounded-lg p-6">
+                <div className="w-16 h-16 mx-auto mb-4 bg-bizflow-blue-100 rounded-full flex items-center justify-center">
+                  <Sparkles className="h-8 w-8 text-bizflow-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-center text-bizflow-blue-900">¡Excelente {name}!</h3>
+                <p className="text-bizflow-gray-600 mb-6 text-center">
+                  Hemos analizado tu caso y estamos listos para mostrarte cómo Bizflow puede ayudarte.
+                  Selecciona el momento que mejor te convenga para la demo.
+                </p>
 
-            <div className="flex justify-start">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setStep(2)}
-                className="border-bizflow-purple-400 text-bizflow-purple-400 hover:bg-bizflow-purple-400/10"
-              >
-                Atrás
-              </Button>
-            </div>
+                <form onSubmit={scheduleDemo} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-bizflow-gray-700">Fecha preferida</label>
+                    <input
+                      type="date"
+                      value={selectedDate}
+                      onChange={(e) => setSelectedDate(e.target.value)}
+                      className="w-full bg-white border border-gray-200 rounded-lg p-3 text-bizflow-gray-900"
+                      min={new Date().toISOString().split('T')[0]}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-bizflow-gray-700">Hora preferida</label>
+                    <select
+                      value={selectedTime}
+                      onChange={(e) => setSelectedTime(e.target.value)}
+                      className="w-full bg-white border border-gray-200 rounded-lg p-3 text-bizflow-gray-900"
+                      required
+                    >
+                      <option value="">Selecciona una hora</option>
+                      {timeSlots.map((time) => (
+                        <option key={time} value={time}>
+                          {time}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-bizflow-gray-700">Plataforma preferida</label>
+                    <div className="grid grid-cols-3 gap-3">
+                      {platforms.map((platform) => (
+                        <button
+                          key={platform.id}
+                          type="button"
+                          onClick={() => setSelectedPlatform(platform.id)}
+                          className={`flex items-center gap-2 p-3 rounded-lg border transition-all ${
+                            selectedPlatform === platform.id
+                              ? 'border-bizflow-blue-600 bg-bizflow-blue-50 text-bizflow-blue-700'
+                              : 'border-gray-200 hover:border-bizflow-blue-200 text-bizflow-gray-700'
+                          }`}
+                        >
+                          <span className="text-xl">{platform.icon}</span>
+                          <span className="text-sm">{platform.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-bizflow-blue-600 hover:bg-bizflow-blue-700 text-white mt-4"
+                  >
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Confirmar Demo
+                  </Button>
+                </form>
+              </div>
+            ) : (
+              <div className="bg-gray-50 rounded-lg p-6">
+                <div className="w-16 h-16 mx-auto mb-4 bg-bizflow-blue-100 rounded-full flex items-center justify-center">
+                  <MessageSquare className="h-8 w-8 text-bizflow-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-center text-bizflow-blue-900">¡Demo Agendada!</h3>
+                <p className="text-bizflow-gray-600 mb-6 text-center">
+                  Hemos enviado la información de la reunión a tu correo electrónico. Por favor, revisa tu bandeja de entrada para encontrar los detalles de la invitación.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="bg-white rounded-lg p-4 border border-bizflow-blue-100">
+                    <h4 className="font-medium text-bizflow-blue-900 mb-2">Mientras tanto, te puede interesar:</h4>
+                    <div className="space-y-3">
+                      <a 
+                        href="/casos-exito" 
+                        className="flex items-center gap-2 text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors"
+                      >
+                        <ArrowRight className="h-4 w-4" />
+                        Descubre cómo otras empresas de {industry} están usando Bizflow
+                      </a>
+                      <a 
+                        href="/blog" 
+                        className="flex items-center gap-2 text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors"
+                      >
+                        <ArrowRight className="h-4 w-4" />
+                        Lee nuestros artículos sobre transformación digital industrial
+                      </a>
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-bizflow-gray-600 text-center">
+                    Nuestro equipo está listo para acompañarte en tu viaje de transformación digital.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {!isConfirmed && (
+              <div className="flex justify-start">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setStep(2)}
+                  className="border-bizflow-blue-200 text-bizflow-blue-700 hover:bg-bizflow-blue-50"
+                >
+                  Atrás
+                </Button>
+              </div>
+            )}
           </div>
         )}
       </DialogContent>
