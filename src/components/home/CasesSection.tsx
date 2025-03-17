@@ -103,8 +103,8 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/kimberly-clark-production.jpg"
-                    alt="Optimización de líneas de producción Kimberly Clark"
+                    src="/images/kimberly-clark-costa-rica.jpg"
+                    alt="Planta de producción Kimberly Clark Costa Rica"
                     fill
                     className="object-cover"
                     crossOrigin="anonymous"
@@ -135,8 +135,8 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/ferreyros-maintenance.jpg"
-                    alt="Digitalización de mantenimiento Ferreyros"
+                    src="/images/ferreyros-caterpillar.jpg"
+                    alt="Maquinaria Caterpillar distribuida por Ferreyros"
                     fill
                     className="object-cover"
                     crossOrigin="anonymous"
@@ -167,8 +167,8 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/aceros-arequipa-steel.jpg"
-                    alt="Gestión de inventario Aceros Arequipa"
+                    src="/images/aceros-arequipa-planta.jpg"
+                    alt="Planta industrial Aceros Arequipa"
                     fill
                     className="object-cover"
                     crossOrigin="anonymous"
@@ -203,8 +203,8 @@ const CasesSection = () => {
               <Card className="overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <Image
-                    src="/images/antamina-mining.jpg"
-                    alt="Seguridad minera Antamina"
+                    src="/images/antamina-operaciones.jpg"
+                    alt="Operaciones mineras Antamina"
                     fill
                     className="object-cover"
                     crossOrigin="anonymous"
