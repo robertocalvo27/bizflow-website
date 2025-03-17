@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, BarChart3, Clock, Database, LayoutDashboard, Zap } from 'lucide-react'
+import { ArrowRight, BarChart3, Clock, Database, LayoutDashboard, Zap, Smartphone, Cloud, Server } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 
 const ServicesSection = () => {
@@ -14,6 +14,18 @@ const ServicesSection = () => {
       title: "Software Operativo",
       description: "Reemplazamos Excel y sistemas heredados con soluciones modernas para gestión de operaciones, mantenimiento y calidad.",
       link: "/servicios/software-operativo"
+    },
+    {
+      icon: <Smartphone className="h-6 w-6 text-bizflow-blue-600" />,
+      title: "Apps para su Empresa",
+      description: "Desarrollamos aplicaciones personalizadas para resolver necesidades únicas de su operación, desde control de inventario hasta gestión de turnos, accesibles en cualquier dispositivo.",
+      link: "/servicios/apps-empresariales"
+    },
+    {
+      icon: <Cloud className="h-6 w-6 text-bizflow-blue-600" />,
+      title: "SaaS (Software as a Service)",
+      description: "Personalizamos nuestras soluciones bajo sus necesidades: escalables, en la nube y listas para usar. Ejemplos: control de producción, gestión de calidad o seguimiento de mantenimiento.",
+      link: "/servicios/saas"
     },
     {
       icon: <BarChart3 className="h-6 w-6 text-bizflow-blue-600" />,
@@ -32,6 +44,12 @@ const ServicesSection = () => {
       title: "Integración de Sistemas",
       description: "Conectamos sistemas aislados como SAP, SCADA y MES para crear una vista unificada de sus operaciones.",
       link: "/servicios/integracion"
+    },
+    {
+      icon: <Server className="h-6 w-6 text-bizflow-blue-600" />,
+      title: "Infraestructura y Soporte Remoto",
+      description: "Implementamos servidores en la nube segura, garantizando disponibilidad y cumplimiento. Soporte técnico remoto 24/7 para resolver incidencias en tiempo real.",
+      link: "/servicios/infraestructura-soporte"
     }
   ]
 

@@ -58,6 +58,21 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/servicios/apps-empresariales" className="text-bizflow-gray-300 hover:text-white transition-colors">
+                  Apps para su Empresa
+                </Link>
+              </li>
+              <li>
+                <Link href="/servicios/saas" className="text-bizflow-gray-300 hover:text-white transition-colors">
+                  SaaS (Software as a Service)
+                </Link>
+              </li>
+              <li>
+                <Link href="/servicios/analitica-industrial" className="text-bizflow-gray-300 hover:text-white transition-colors">
+                  Analítica Industrial
+                </Link>
+              </li>
+              <li>
                 <Link href="/servicios/automatizacion" className="text-bizflow-gray-300 hover:text-white transition-colors">
                   Automatización
                 </Link>
@@ -68,8 +83,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/servicios/consultoria" className="text-bizflow-gray-300 hover:text-white transition-colors">
-                  Consultoría Tecnológica
+                <Link href="/servicios/infraestructura-soporte" className="text-bizflow-gray-300 hover:text-white transition-colors">
+                  Infraestructura y Soporte Remoto
                 </Link>
               </li>
             </ul>
