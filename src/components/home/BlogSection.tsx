@@ -44,8 +44,15 @@ const blogPosts = [
 
 const BlogSection = () => {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-gradient-to-br from-bizflow-gray-50 to-bizflow-blue-50 relative overflow-hidden">
+      {/* Patrones de fondo */}
+      <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-10"></div>
+      
+      {/* Formas decorativas */}
+      <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-bizflow-blue-200 opacity-20 blur-3xl"></div>
+      <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-bizflow-purple-200 opacity-20 blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +77,7 @@ const BlogSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+              <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-shadow border-none shadow-md bg-white">
                 <div className="relative h-48 w-full">
                   <Image
                     src={post.image}
