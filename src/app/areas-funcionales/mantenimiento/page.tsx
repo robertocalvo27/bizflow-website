@@ -1,8 +1,8 @@
 import { Metadata } from "next"
 import Hero from "./components/Hero"
 import ProblemaSolucion from "./components/ProblemaSolucion"
-import CrossSelling from "@/components/shared/CrossSelling"
-import CtaSection from "@/components/shared/CtaSection"
+import CrossSelling from "@/components/servicios/CrossSelling"
+import CtaSection from "@/components/servicios/CtaSection"
 
 export const metadata: Metadata = {
   title: "Mantenimiento Industrial Digital | BizFlow",
@@ -39,7 +39,7 @@ const MantenimientoPage = () => {
       />
       <CtaSection
         titulo="¿Listo para optimizar su mantenimiento?"
-        descripcion="Comience hoy mismo a transformar su gestión de mantenimiento con nuestras soluciones digitales"
+        subtitulo="Comience hoy mismo a transformar su gestión de mantenimiento con nuestras soluciones digitales"
       />
     </main>
   )

@@ -5,7 +5,7 @@ import JobsSection from './components/JobsSection'
 import BenefitsSection from './components/BenefitsSection'
 import TestimonialsSection from './components/TestimonialsSection'
 import CultureSection from './components/CultureSection'
-import CtaSection from '@/components/servicios/CtaSection'
+import { CtaSection } from '@/components/shared/CtaSection'
 
 export const metadata: Metadata = {
   title: 'Carreras | Únete al equipo de Bizflow',
@@ -21,8 +21,13 @@ const CarrerasPage = () => {
       <TestimonialsSection />
       <CultureSection />
       <CtaSection 
-        titulo="¿Listo para dar el siguiente paso en tu carrera?" 
-        subtitulo="Únete a un equipo apasionado por la tecnología y la innovación industrial."
+        title="¿Listo para dar el siguiente paso en tu carrera?" 
+        description="Únete a un equipo apasionado por la tecnología y la innovación industrial."
+        primaryButtonText="Ver vacantes disponibles"
+        primaryButtonHref="#jobs"
+        secondaryButtonText="Contáctanos"
+        secondaryButtonHref="/contacto"
+        withPattern={true}
       />
     </main>
   )

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Hero from './components/Hero'
 import ProblemaSolucion from './components/ProblemaSolucion'
-import CrossSelling from '@/components/shared/CrossSelling'
-import CtaSection from '@/components/shared/CtaSection'
+import CrossSelling from '@/components/servicios/CrossSelling'
+import CtaSection from '@/components/servicios/CtaSection'
 
 export const metadata: Metadata = {
   title: 'Minería Digital | Soluciones Inteligentes para la Industria Minera',
@@ -39,7 +39,7 @@ const MineriaPage = () => {
       />
       <CtaSection
         titulo="¿Listo para Transformar su Operación Minera?"
-        descripcion="Contáctenos hoy para descubrir cómo nuestras soluciones digitales pueden optimizar su operación minera"
+        subtitulo="Contáctenos hoy para descubrir cómo nuestras soluciones digitales pueden optimizar su operación minera"
       />
     </main>
   )
