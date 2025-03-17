@@ -118,25 +118,40 @@ const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Nosotros Dropdown */}
+          {/* Acerca de Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
-              Nosotros <ChevronDown className="ml-1 h-4 w-4" />
+              Acerca de <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem>
-                <Link href="/nosotros/quienes-somos" className="w-full">
+                <Link href="/acerca-de" className="w-full">
                   Quiénes Somos
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/nosotros/equipo" className="w-full">
-                  Nuestro Equipo
+                <Link href="/acerca-de#adn-industrial" className="w-full">
+                  ADN Industrial
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/nosotros/certificaciones" className="w-full">
-                  Certificaciones
+                <Link href="/acerca-de#donde-estamos" className="w-full">
+                  Dónde Estamos
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/acerca-de#certificaciones" className="w-full">
+                  Certificaciones y Alianzas
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/acerca-de#valores" className="w-full">
+                  Nuestros Valores
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/acerca-de#equipo" className="w-full">
+                  El Equipo Bizflow
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -232,15 +247,24 @@ const Navbar = () => {
                   </div>
 
                   <div className="flex flex-col space-y-3 border-b border-gray-100 pb-4">
-                    <h3 className="font-semibold text-bizflow-blue-800">Nosotros</h3>
-                    <Link href="/nosotros/quienes-somos" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                    <h3 className="font-semibold text-bizflow-blue-800">Acerca de</h3>
+                    <Link href="/acerca-de" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       Quiénes Somos
                     </Link>
-                    <Link href="/nosotros/equipo" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
-                      Nuestro Equipo
+                    <Link href="/acerca-de#adn-industrial" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      ADN Industrial
                     </Link>
-                    <Link href="/nosotros/certificaciones" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
-                      Certificaciones
+                    <Link href="/acerca-de#donde-estamos" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Dónde Estamos
+                    </Link>
+                    <Link href="/acerca-de#certificaciones" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Certificaciones y Alianzas
+                    </Link>
+                    <Link href="/acerca-de#valores" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Nuestros Valores
+                    </Link>
+                    <Link href="/acerca-de#equipo" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      El Equipo Bizflow
                     </Link>
                   </div>
 
