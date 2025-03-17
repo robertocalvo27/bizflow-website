@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client'
 
 import React from 'react'
@@ -17,6 +18,27 @@ interface BizBotMessageProps {
 
 const BizBotMessage: React.FC<BizBotMessageProps> = ({ message }) => {
   const isBot = message.type === 'bot'
+=======
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { MessageSquare } from 'lucide-react';
+
+interface Message {
+  id: string;
+  type: 'bot' | 'user';
+  content: string;
+  timestamp: Date;
+}
+
+interface BizBotMessageProps {
+  message: Message;
+}
+
+const BizBotMessage: React.FC<BizBotMessageProps> = ({ message }) => {
+  const isBot = message.type === 'bot';
+>>>>>>> df402362e5c128394b3403b9b649bc15aba8e374
 
   return (
     <motion.div
@@ -52,7 +74,14 @@ const BizBotMessage: React.FC<BizBotMessageProps> = ({ message }) => {
         </span>
       </div>
     </motion.div>
+<<<<<<< HEAD
   )
 }
 
 export default BizBotMessage 
+=======
+  );
+};
+
+export default BizBotMessage; 
+>>>>>>> df402362e5c128394b3403b9b649bc15aba8e374
