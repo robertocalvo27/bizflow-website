@@ -57,6 +57,21 @@ const Navbar = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
+                <Link href="/servicios/apps-empresariales" className="w-full">
+                  Apps para su Empresa
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/servicios/saas" className="w-full">
+                  SaaS (Software as a Service)
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/servicios/analitica-industrial" className="w-full">
+                  Analítica Industrial
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
                 <Link href="/servicios/automatizacion" className="w-full">
                   Automatización
                 </Link>
@@ -67,8 +82,8 @@ const Navbar = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/servicios/consultoria" className="w-full">
-                  Consultoría Tecnológica
+                <Link href="/servicios/infraestructura-soporte" className="w-full">
+                  Infraestructura y Soporte Remoto
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -180,14 +195,23 @@ const Navbar = () => {
                     <Link href="/servicios/software-operativo" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       Software Operativo
                     </Link>
+                    <Link href="/servicios/apps-empresariales" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Apps para su Empresa
+                    </Link>
+                    <Link href="/servicios/saas" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      SaaS (Software as a Service)
+                    </Link>
+                    <Link href="/servicios/analitica-industrial" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Analítica Industrial
+                    </Link>
                     <Link href="/servicios/automatizacion" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       Automatización
                     </Link>
                     <Link href="/servicios/integracion" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       Integración de Sistemas
                     </Link>
-                    <Link href="/servicios/consultoria" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
-                      Consultoría Tecnológica
+                    <Link href="/servicios/infraestructura-soporte" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Infraestructura y Soporte Remoto
                     </Link>
                   </div>
 
