@@ -1,14 +1,11 @@
-'use client'
+import { Metadata } from 'next'
+import ServiciosContent from './components/ServiciosContent'
 
-import React from 'react'
-import HeroSection from './components/HeroSection'
-import ServicesSection from '@/components/home/ServicesSection'
+export const metadata: Metadata = {
+  title: 'Servicios | BizFlow - Soluciones de Software Industrial',
+  description: 'Descubra nuestras soluciones tecnológicas diseñadas para transformar sus operaciones industriales. Software personalizado, analítica avanzada y consultoría especializada.',
+}
 
 export default function ServiciosPage() {
-  return (
-    <main className="flex min-h-screen flex-col">
-      <HeroSection />
-      <ServicesSection showAllServices={true} />
-    </main>
-  )
+  return <ServiciosContent />
 } 
