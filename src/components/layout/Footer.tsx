@@ -196,6 +196,9 @@ const Footer = () => {
               <Link href="/politica-privacidad" className="text-bizflow-gray-400 hover:text-white text-sm transition-colors">
                 Política de Privacidad
               </Link>
+              <Link href="/politica-cookies" className="text-bizflow-gray-400 hover:text-white text-sm transition-colors">
+                Política de Cookies
+              </Link>
               <Link href="/terminos-condiciones" className="text-bizflow-gray-400 hover:text-white text-sm transition-colors">
                 Términos y Condiciones
               </Link>
