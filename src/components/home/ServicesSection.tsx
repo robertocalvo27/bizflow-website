@@ -4,11 +4,52 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, BarChart3, Clock, Database, LayoutDashboard, Zap, Smartphone, Cloud, Server } from 'lucide-react'
+import { ArrowRight, BarChart3, Clock, Database, LayoutDashboard, Zap, Smartphone, Cloud, Server, Code2, Laptop, Settings } from 'lucide-react'
 import { Card } from '@/components/ui/card'
+import { motion, useScroll, useTransform } from 'framer-motion'
+
+interface Service {
+  icon: React.ReactNode
+  title: string
+  description: string
+  link: string
+}
+
+interface ServiceCardProps {
+  service: Service
+  index: number
+}
+
+const ServiceCard = ({ service, index }: ServiceCardProps) => {
+  const { scrollYProgress } = useScroll()
+  const y = useTransform(scrollYProgress, [0, 1], [0, index * 20])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.02])
+
+  return (
+    <motion.div
+      style={{ y, scale }}
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Card className="p-6 hover:shadow-lg transition-shadow border-t-4 border-t-bizflow-blue-600 h-full flex flex-col">
+        <div className="flex items-center mb-4">
+          <div className="bg-bizflow-blue-100 p-3 rounded-full mr-3">
+            {service.icon}
+          </div>
+          <h3 className="text-xl font-bold text-bizflow-blue-800">{service.title}</h3>
+        </div>
+        <p className="text-bizflow-gray-600 mb-4 flex-grow">{service.description}</p>
+        <Link href={service.link} className="text-bizflow-blue-600 font-medium inline-flex items-center group">
+          Saber más
+          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </Card>
+    </motion.div>
+  )
+}
 
 const ServicesSection = () => {
-  const services = [
+  const services: Service[] = [
     {
       icon: <Database className="h-6 w-6 text-bizflow-blue-600" />,
       title: "Software Operativo",
@@ -56,30 +97,24 @@ const ServicesSection = () => {
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div 
+          className="max-w-3xl mx-auto text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="section-title">
             Soluciones que transforman operaciones industriales
           </h2>
           <p className="paragraph max-w-2xl mx-auto">
             Ayudamos a las empresas a abandonar Excel y sistemas heredados complejos por soluciones digitales ágiles que agilizan las operaciones y mejoran la toma de decisiones.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-shadow border-t-4 border-t-bizflow-blue-600 h-full flex flex-col">
-              <div className="flex items-center mb-4">
-                <div className="bg-bizflow-blue-100 p-3 rounded-full mr-3">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-bizflow-blue-800">{service.title}</h3>
-              </div>
-              <p className="text-bizflow-gray-600 mb-4 flex-grow">{service.description}</p>
-              <Link href={service.link} className="text-bizflow-blue-600 font-medium inline-flex items-center group">
-                Saber más
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Card>
+            <ServiceCard key={index} service={service} index={index} />
           ))}
         </div>
 
