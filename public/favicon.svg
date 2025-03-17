@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="8" fill="url(#bizflowGradient)"/>
+  <defs>
+    <linearGradient id="bizflowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B3687"/>
+      <stop offset="60%" stop-color="#4C7BD8"/>
+      <stop offset="100%" stop-color="#7022DD"/>
+    </linearGradient>
+  </defs>
+  <path d="M10 11H22C22.5523 11 23 11.4477 23 12V12C23 12.5523 22.5523 13 22 13H10C9.44772 13 9 12.5523 9 12V12C9 11.4477 9.44772 11 10 11Z" fill="white"/>
+  <path d="M10 15H22C22.5523 15 23 15.4477 23 16V16C23 16.5523 22.5523 17 22 17H10C9.44772 17 9 16.5523 9 16V16C9 15.4477 9.44772 15 10 15Z" fill="white"/>
+  <path d="M10 19H22C22.5523 19 23 19.4477 23 20V20C23 20.5523 22.5523 21 22 21H10C9.44772 21 9 20.5523 9 20V20C9 19.4477 9.44772 19 10 19Z" fill="white"/>
+</svg>
