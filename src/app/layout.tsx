@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ErrorMonitoring from "@/components/ErrorMonitoring";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
-import BizBot from "@/components/bizbot/BizBot";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: {
-    template: '%s | Bizflow - Software Industrial',
-    default: 'Bizflow - Software Industrial para Operaciones Ágiles',
-  },
-  description: "Soluciones de software industrial para operaciones más ágiles e inteligentes. Transformación digital para manufactura, minería y farmacéutica.",
+  title: "BizFlow | Soluciones de Software para Empresas",
+  description: "Optimiza tus procesos empresariales con nuestras soluciones de software personalizadas.",
   keywords: [
     "software industrial",
     "transformación digital",
@@ -53,18 +48,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="es">
       <body className={inter.className}>
         <ErrorMonitoring />
-        <Navbar />
         {children}
         <Footer />
         <CookieBanner />
-        <BizBot />
       </body>
     </html>
   );
