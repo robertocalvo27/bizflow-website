@@ -34,14 +34,6 @@ const CasesSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-bizflow-blue-900/50 to-transparent"></div>
               <div className="absolute top-6 left-6 flex flex-col gap-2">
-                <Image
-                  src="/images/cliente-smith-nephew.svg"
-                  alt="Smith & Nephew Logo"
-                  width={120}
-                  height={50}
-                  className="h-auto bg-white/90 rounded p-2"
-                  crossOrigin="anonymous"
-                />
                 <span className="bg-white/90 text-bizflow-blue-900 text-sm px-2 py-1 rounded">
                   Costa Rica
                 </span>
