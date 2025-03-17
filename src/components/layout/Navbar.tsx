@@ -73,7 +73,7 @@ const Navbar = () => {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Image
-              src="@logo-bizflow.svg"
+              src="/images/logo-bizflow.svg"
               alt="Bizflow Logo"
               fill
               className="object-contain"
@@ -325,7 +325,7 @@ const Navbar = () => {
                   <Link href="/" className="flex items-center">
                     <div className="relative h-10 w-32 mr-2">
                       <Image
-                        src="/logo.svg"
+                        src="/images/logo-bizflow.svg"
                         alt="Bizflow Logo"
                         fill
                         className="object-contain"
