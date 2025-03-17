@@ -115,6 +115,45 @@ const Navbar = () => {
                   Alimentos y Bebidas
                 </Link>
               </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/industrias/energia" className="w-full">
+                  Energía
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Áreas Funcionales Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
+              Áreas Funcionales <ChevronDown className="ml-1 h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <Link href="/areas-funcionales/recursos-humanos" className="w-full">
+                  Recursos Humanos
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/areas-funcionales/logistica" className="w-full">
+                  Logística
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/areas-funcionales/seguridad" className="w-full">
+                  Seguridad Industrial
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/areas-funcionales/produccion" className="w-full">
+                  Producción
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/areas-funcionales/mantenimiento" className="w-full">
+                  Mantenimiento
+                </Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -156,11 +195,6 @@ const Navbar = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-
-          {/* Casos de Éxito link */}
-          <Link href="/casos-exito" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
-            Casos de Éxito
-          </Link>
 
           {/* Blog link */}
           <Link href="/blog" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
@@ -244,6 +278,28 @@ const Navbar = () => {
                     <Link href="/industrias/alimentos-bebidas" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       Alimentos y Bebidas
                     </Link>
+                    <Link href="/industrias/energia" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Energía
+                    </Link>
+                  </div>
+
+                  <div className="flex flex-col space-y-3 border-b border-gray-100 pb-4">
+                    <h3 className="font-semibold text-bizflow-blue-800">Áreas Funcionales</h3>
+                    <Link href="/areas-funcionales/recursos-humanos" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Recursos Humanos
+                    </Link>
+                    <Link href="/areas-funcionales/logistica" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Logística
+                    </Link>
+                    <Link href="/areas-funcionales/seguridad" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Seguridad Industrial
+                    </Link>
+                    <Link href="/areas-funcionales/produccion" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Producción
+                    </Link>
+                    <Link href="/areas-funcionales/mantenimiento" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                      Mantenimiento
+                    </Link>
                   </div>
 
                   <div className="flex flex-col space-y-3 border-b border-gray-100 pb-4">
@@ -267,10 +323,6 @@ const Navbar = () => {
                       El Equipo Bizflow
                     </Link>
                   </div>
-
-                  <Link href="/casos-exito" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
-                    Casos de Éxito
-                  </Link>
 
                   <Link href="/blog" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
                     Blog
