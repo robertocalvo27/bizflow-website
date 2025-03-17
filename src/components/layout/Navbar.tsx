@@ -68,7 +68,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <motion.div 
-            className="relative h-10 w-32 mr-8"
+            className="relative h-12 w-40 mr-8"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
