@@ -62,7 +62,7 @@ const Navbar = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/servicios/saas" className="w-full">
+                <Link href="/servicios/software-as-a-service" className="w-full">
                   SaaS (Software as a Service)
                 </Link>
               </DropdownMenuItem>
@@ -198,7 +198,7 @@ const Navbar = () => {
                     <Link href="/servicios/apps-empresariales" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       Apps para su Empresa
                     </Link>
-                    <Link href="/servicios/saas" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
+                    <Link href="/servicios/software-as-a-service" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       SaaS (Software as a Service)
                     </Link>
                     <Link href="/servicios/analitica-industrial" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">

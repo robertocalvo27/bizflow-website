@@ -63,7 +63,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/servicios/saas" className="text-bizflow-gray-300 hover:text-white transition-colors">
+                <Link href="/servicios/software-as-a-service" className="text-bizflow-gray-300 hover:text-white transition-colors">
                   SaaS (Software as a Service)
                 </Link>
               </li>

@@ -66,7 +66,7 @@ const ServicesSection = () => {
       icon: <Cloud className="h-6 w-6 text-bizflow-blue-600" />,
       title: "SaaS (Software as a Service)",
       description: "Personalizamos nuestras soluciones bajo sus necesidades: escalables, en la nube y listas para usar. Ejemplos: control de producción, gestión de calidad o seguimiento de mantenimiento.",
-      link: "/servicios/saas"
+      link: "/servicios/software-as-a-service"
     },
     {
       icon: <BarChart3 className="h-6 w-6 text-bizflow-blue-600" />,
