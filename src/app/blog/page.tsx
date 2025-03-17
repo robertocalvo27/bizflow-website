@@ -18,7 +18,7 @@ const blogPosts = [
     author: 'Carlos Rodríguez',
     date: '15 Mar 2023',
     category: 'Transformación Digital',
-    image: '/images/blog/digital-transformation.jpg',
+    image: '/images/blog/digital-transformation.svg',
     slug: 'transformacion-digital-industria-4-0'
   },
   {
@@ -28,7 +28,7 @@ const blogPosts = [
     author: 'María González',
     date: '28 Feb 2023',
     category: 'IoT Industrial',
-    image: '/images/blog/industrial-iot.jpg',
+    image: '/images/blog/industrial-iot.svg',
     slug: 'implementacion-iot-entornos-industriales'
   },
   {
@@ -38,7 +38,7 @@ const blogPosts = [
     author: 'Javier Méndez',
     date: '10 Feb 2023',
     category: 'Mantenimiento',
-    image: '/images/blog/predictive-maintenance.jpg',
+    image: '/images/blog/predictive-maintenance.svg',
     slug: 'mantenimiento-predictivo-futuro-industria'
   },
   {
@@ -48,7 +48,7 @@ const blogPosts = [
     author: 'Ana Martínez',
     date: '5 Feb 2023',
     category: 'Automatización',
-    image: '/images/blog/automation.jpg',
+    image: '/images/blog/automation.svg',
     slug: 'automatizacion-procesos-industriales'
   },
   {
@@ -58,7 +58,7 @@ const blogPosts = [
     author: 'Roberto Sánchez',
     date: '20 Ene 2023',
     category: 'Ciberseguridad',
-    image: '/images/blog/cybersecurity.jpg',
+    image: '/images/blog/cybersecurity.svg',
     slug: 'ciberseguridad-entornos-industriales'
   },
   {
@@ -68,7 +68,7 @@ const blogPosts = [
     author: 'Laura Gómez',
     date: '10 Ene 2023',
     category: 'Analítica',
-    image: '/images/blog/data-analytics.jpg',
+    image: '/images/blog/data-analytics.svg',
     slug: 'analitica-datos-optimizar-operaciones'
   }
 ]
