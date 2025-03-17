@@ -195,6 +195,11 @@ const Navbar = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+
+          {/* Carreras Link */}
+          <Link href="/carreras" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 font-medium transition-colors">
+            Carreras
+          </Link>
         </div>
 
         {/* Call to Action */}
@@ -316,6 +321,13 @@ const Navbar = () => {
                     </Link>
                     <Link href="/acerca-de#equipo" className="text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors pl-3">
                       El Equipo Bizflow
+                    </Link>
+                  </div>
+
+                  {/* Carreras Link - Mobile */}
+                  <div className="flex flex-col space-y-3 border-b border-gray-100 pb-4">
+                    <Link href="/carreras" className="font-semibold text-bizflow-blue-800 hover:text-bizflow-blue-600 transition-colors">
+                      Carreras
                     </Link>
                   </div>
                 </nav>
