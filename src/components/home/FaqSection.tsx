@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useRef } from 'react'
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { AlertTriangle, CheckCircle2 } from 'lucide-react'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 
 const faqs = [
   {
@@ -114,37 +115,72 @@ const faqs = [
 ]
 
 const FaqSection = () => {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const titleY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50])
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 bg-white relative overflow-hidden" ref={sectionRef}>
+      {/* Decorative elements */}
+      <motion.div 
+        className="absolute top-20 right-10 w-64 h-64 rounded-full bg-bizflow-purple-100 opacity-20 blur-3xl"
+        style={{ 
+          x: useTransform(scrollYProgress, [0, 1], [100, -100]),
+          opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.2, 0])
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-bizflow-blue-100 opacity-20 blur-3xl"
+        style={{ 
+          x: useTransform(scrollYProgress, [0, 1], [-100, 100]),
+          opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.2, 0])
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            style={{ y: titleY, opacity: titleOpacity }}
+          >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-bizflow-blue-900 to-bizflow-purple-900 bg-clip-text text-transparent">
               ¿Tiene estos desafíos en su operación?
             </h2>
             <p className="text-lg md:text-xl text-bizflow-blue-700">
               Nosotros los resolvemos
             </p>
-          </div>
+          </motion.div>
 
           <div className="rounded-2xl">
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`} 
-                  className="border border-bizflow-blue-100 rounded-lg mb-4 overflow-hidden hover:border-bizflow-purple-400 transition-colors"
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <AccordionTrigger className="text-left px-6 py-4 hover:bg-bizflow-purple-50">
-                    <div className="flex items-start gap-3 pr-8">
-                      <AlertTriangle className="h-5 w-5 text-bizflow-purple-500 shrink-0 mt-1" />
-                      <span className="text-bizflow-blue-900 font-medium">{faq.question}</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-bizflow-blue-700 px-6 pb-4">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
+                  <AccordionItem 
+                    value={`item-${index}`} 
+                    className="border border-bizflow-blue-100 rounded-lg mb-4 overflow-hidden hover:border-bizflow-purple-400 transition-colors"
+                  >
+                    <AccordionTrigger className="text-left px-6 py-4 hover:bg-bizflow-purple-50">
+                      <div className="flex items-start gap-3 pr-8">
+                        <AlertTriangle className="h-5 w-5 text-bizflow-purple-500 shrink-0 mt-1" />
+                        <span className="text-bizflow-blue-900 font-medium">{faq.question}</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-bizflow-blue-700 px-6 pb-4">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
               ))}
             </Accordion>
           </div>
