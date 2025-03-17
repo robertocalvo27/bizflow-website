@@ -1,9 +1,10 @@
 "use client"
 
 import React from 'react'
-import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, PhoneCall, Send } from 'lucide-react'
+import { MessageSquare } from 'lucide-react'
+import ScheduleMeetingModal from '@/components/modals/ScheduleMeetingModal'
+import ContactModal from '@/components/modals/ContactModal'
 
 const CtaSection = () => {
   return (
@@ -28,19 +29,14 @@ const CtaSection = () => {
             Nuestro enfoque industrial y ágil nos permite entregar soluciones personalizadas que generan impacto inmediato. Agenda una consulta sin costo y conoce cómo podemos ayudarte.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button asChild size="lg" className="bg-white hover:bg-bizflow-gray-100 text-bizflow-blue-700 font-medium">
-              <Link href="/contacto" className="inline-flex items-center">
-                <Send className="mr-2 h-4 w-4" />
-                Enviar mensaje
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-bizflow-blue-800/50">
-              <Link href="/demo" className="inline-flex items-center">
-                <PhoneCall className="mr-2 h-4 w-4" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <ScheduleMeetingModal>
+              <Button size="lg" className="bg-bizflow-purple-600 hover:bg-bizflow-purple-700 text-white font-medium">
+                <MessageSquare className="mr-2 h-4 w-4" />
                 Agendar llamada
-              </Link>
-            </Button>
+              </Button>
+            </ScheduleMeetingModal>
+            <ContactModal />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
