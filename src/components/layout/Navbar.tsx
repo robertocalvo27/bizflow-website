@@ -68,12 +68,12 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <motion.div 
-            className="relative h-10 w-32 mr-2"
+            className="relative h-12 w-40 mr-8"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Image
-              src="/logo.svg"
+              src="/images/logo-bizflow.svg"
               alt="Bizflow Logo"
               fill
               className="object-contain"
@@ -325,7 +325,7 @@ const Navbar = () => {
                   <Link href="/" className="flex items-center">
                     <div className="relative h-10 w-32 mr-2">
                       <Image
-                        src="/logo.svg"
+                        src="/images/logo-bizflow.svg"
                         alt="Bizflow Logo"
                         fill
                         className="object-contain"
