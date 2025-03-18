@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Scale, FileText, Users, AlertCircle, HelpCircle } from 'lucide-react'
+import { FileText, Scale, Shield, Users } from 'lucide-react'
 
 const TermsContent = () => {
   return (
@@ -29,7 +29,7 @@ const TermsContent = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-bizflow-gray-600"
             >
-              Conoce las condiciones de uso de nuestros servicios
+              Bases legales que rigen el uso de nuestros servicios
             </motion.p>
           </div>
         </div>
@@ -48,7 +48,9 @@ const TermsContent = () => {
               className="prose prose-lg max-w-none mb-12"
             >
               <p className="text-bizflow-gray-600 mb-6">
-                Al utilizar los servicios de Bizflow, aceptas estos términos y condiciones en su totalidad. Por favor, lee detenidamente este documento que establece tus derechos y responsabilidades al usar nuestra plataforma y servicios.
+                Al utilizar los servicios de Bizflow, usted acepta estos términos y condiciones en su totalidad. 
+                Por favor, lea detenidamente este documento que establece sus derechos y obligaciones en relación 
+                con el uso de nuestra plataforma y servicios.
               </p>
             </motion.div>
 
@@ -63,21 +65,21 @@ const TermsContent = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-bizflow-blue-50 rounded-lg">
-                    <Scale className="h-6 w-6 text-bizflow-blue-600" />
+                    <FileText className="h-6 w-6 text-bizflow-blue-600" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
-                      Acuerdo de Servicios
+                      Aceptación de los Términos
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
                       <p>
-                        Nuestro acuerdo de servicios incluye:
+                        Al acceder y utilizar nuestros servicios, usted acepta:
                       </p>
                       <ul className="list-disc pl-6 space-y-2">
-                        <li>Licencia de uso del software</li>
-                        <li>Términos de suscripción y pagos</li>
-                        <li>Niveles de servicio garantizados</li>
-                        <li>Soporte técnico y mantenimiento</li>
+                        <li>Cumplir con estos términos y condiciones</li>
+                        <li>Respetar nuestras políticas y directrices</li>
+                        <li>Proporcionar información precisa y actualizada</li>
+                        <li>Mantener la confidencialidad de sus credenciales</li>
                       </ul>
                     </div>
                   </div>
@@ -97,17 +99,17 @@ const TermsContent = () => {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
-                      Responsabilidades del Usuario
+                      Uso del Servicio
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
                       <p>
-                        Como usuario de Bizflow, te comprometes a:
+                        Nuestros servicios están sujetos a las siguientes condiciones:
                       </p>
                       <ul className="list-disc pl-6 space-y-2">
-                        <li>Mantener la confidencialidad de tus credenciales</li>
-                        <li>Usar el servicio de manera ética y legal</li>
-                        <li>Respetar los derechos de propiedad intelectual</li>
-                        <li>No realizar ingeniería inversa del software</li>
+                        <li>Uso exclusivo para fines comerciales legítimos</li>
+                        <li>Prohibición de actividades fraudulentas o maliciosas</li>
+                        <li>Respeto a los derechos de propiedad intelectual</li>
+                        <li>Cumplimiento de las leyes aplicables</li>
                       </ul>
                     </div>
                   </div>
@@ -123,21 +125,21 @@ const TermsContent = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-bizflow-blue-50 rounded-lg">
-                    <FileText className="h-6 w-6 text-bizflow-blue-600" />
+                    <Shield className="h-6 w-6 text-bizflow-blue-600" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
-                      Propiedad Intelectual
+                      Privacidad y Seguridad
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
                       <p>
-                        Derechos y protecciones:
+                        Nos comprometemos a proteger su información:
                       </p>
                       <ul className="list-disc pl-6 space-y-2">
-                        <li>Todo el contenido es propiedad de Bizflow</li>
-                        <li>Protección de marcas registradas y patentes</li>
-                        <li>Licencias de uso limitado</li>
-                        <li>Restricciones de copia y distribución</li>
+                        <li>Implementación de medidas de seguridad robustas</li>
+                        <li>Protección de datos personales y empresariales</li>
+                        <li>Cumplimiento de regulaciones de privacidad</li>
+                        <li>Transparencia en el manejo de datos</li>
                       </ul>
                     </div>
                   </div>
@@ -153,7 +155,7 @@ const TermsContent = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-bizflow-blue-50 rounded-lg">
-                    <AlertCircle className="h-6 w-6 text-bizflow-blue-600" />
+                    <Scale className="h-6 w-6 text-bizflow-blue-600" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
@@ -161,13 +163,13 @@ const TermsContent = () => {
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
                       <p>
-                        Bizflow no será responsable por:
+                        Aspectos importantes sobre nuestra responsabilidad:
                       </p>
                       <ul className="list-disc pl-6 space-y-2">
-                        <li>Interrupciones del servicio por mantenimiento</li>
-                        <li>Pérdida de datos por causas externas</li>
-                        <li>Uso indebido del servicio</li>
-                        <li>Daños indirectos o consecuentes</li>
+                        <li>Garantía limitada de servicios</li>
+                        <li>Exclusiones de responsabilidad específicas</li>
+                        <li>Limitaciones de daños indirectos</li>
+                        <li>Condiciones de reembolso y cancelación</li>
                       </ul>
                     </div>
                   </div>
@@ -175,7 +177,7 @@ const TermsContent = () => {
               </motion.div>
             </div>
 
-            {/* Contacto para Preguntas */}
+            {/* Contacto Legal */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -184,10 +186,10 @@ const TermsContent = () => {
               className="mt-16 p-8 bg-bizflow-blue-50 rounded-lg text-center"
             >
               <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
-                ¿Necesitas aclarar algún punto?
+                ¿Tiene preguntas legales?
               </h2>
               <p className="text-bizflow-gray-600 mb-4">
-                Si tienes dudas sobre nuestros términos y condiciones, nuestro equipo legal está disponible para ayudarte.
+                Si tiene alguna pregunta sobre nuestros términos y condiciones, no dude en contactar a nuestro equipo legal.
               </p>
               <a
                 href="mailto:legal@bizflow.com"

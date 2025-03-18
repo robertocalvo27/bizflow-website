@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import CookiesPolicyContent from './components/CookiesPolicyContent'
 
 export const metadata: Metadata = {
-  title: 'Política de Cookies | Bizflow - Transformación Digital Industrial',
-  description: 'Conoce cómo utilizamos las cookies para mejorar tu experiencia en Bizflow. Información detallada sobre tipos de cookies, su propósito y cómo controlarlas.',
+  title: 'Política de Cookies | Bizflow - Navegación Transparente',
+  description: 'Conoce cómo Bizflow utiliza cookies para mejorar tu experiencia. Información detallada sobre tipos de cookies, su propósito y cómo controlarlas en tu navegador.'
 }
 
-export default function CookiesPolicy() {
+export default function CookiesPolicyPage() {
   return (
-    <main>
+    <main className="min-h-screen bg-white">
       <CookiesPolicyContent />
     </main>
   )

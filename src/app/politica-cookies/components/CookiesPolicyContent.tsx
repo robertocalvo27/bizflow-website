@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Cookie, Shield, Settings, Bell, Info } from 'lucide-react'
+import { Cookie, Shield, Lock, Eye } from 'lucide-react'
 
 const CookiesPolicyContent = () => {
   return (
@@ -29,7 +29,7 @@ const CookiesPolicyContent = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-bizflow-gray-600"
             >
-              Entendiendo cómo utilizamos las cookies para mejorar tu experiencia
+              Entendiendo cómo utilizamos las cookies para mejorar su experiencia
             </motion.p>
           </div>
         </div>
@@ -48,7 +48,9 @@ const CookiesPolicyContent = () => {
               className="prose prose-lg max-w-none mb-12"
             >
               <p className="text-bizflow-gray-600 mb-6">
-                En Bizflow utilizamos cookies y tecnologías similares para mejorar tu experiencia de navegación, personalizar el contenido y analizar el tráfico de nuestro sitio web. Esta política explica cómo utilizamos estas tecnologías y qué opciones tienes al respecto.
+                En Bizflow utilizamos cookies y tecnologías similares para mejorar su experiencia de navegación, 
+                personalizar el contenido y analizar el tráfico de nuestro sitio web. Esta política explica cómo 
+                y por qué utilizamos estas tecnologías.
               </p>
             </motion.div>
 
@@ -71,13 +73,14 @@ const CookiesPolicyContent = () => {
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
                       <p>
-                        Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas nuestro sitio web. Estas nos permiten:
+                        Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita nuestro sitio web.
+                        Estos archivos nos permiten:
                       </p>
                       <ul className="list-disc pl-6 space-y-2">
-                        <li>Recordar tus preferencias y ajustes</li>
-                        <li>Mantener tu sesión activa</li>
-                        <li>Entender cómo interactúas con nuestro sitio</li>
-                        <li>Mejorar la velocidad y seguridad del sitio</li>
+                        <li>Recordar sus preferencias y ajustes</li>
+                        <li>Mantener su sesión activa</li>
+                        <li>Entender cómo interactúa con nuestro sitio</li>
+                        <li>Mejorar la seguridad de la navegación</li>
                       </ul>
                     </div>
                   </div>
@@ -100,19 +103,14 @@ const CookiesPolicyContent = () => {
                       Tipos de Cookies que Utilizamos
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
+                      <p>
+                        Clasificamos nuestras cookies según su función:
+                      </p>
                       <ul className="list-disc pl-6 space-y-2">
-                        <li>
-                          <strong>Cookies Esenciales:</strong> Necesarias para el funcionamiento básico del sitio
-                        </li>
-                        <li>
-                          <strong>Cookies de Rendimiento:</strong> Nos ayudan a mejorar el rendimiento del sitio
-                        </li>
-                        <li>
-                          <strong>Cookies de Funcionalidad:</strong> Permiten recordar tus preferencias
-                        </li>
-                        <li>
-                          <strong>Cookies de Marketing:</strong> Ayudan a mostrar anuncios relevantes
-                        </li>
+                        <li>Cookies esenciales para el funcionamiento del sitio</li>
+                        <li>Cookies de rendimiento y análisis</li>
+                        <li>Cookies de funcionalidad</li>
+                        <li>Cookies de publicidad y seguimiento</li>
                       </ul>
                     </div>
                   </div>
@@ -128,7 +126,7 @@ const CookiesPolicyContent = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-bizflow-blue-50 rounded-lg">
-                    <Settings className="h-6 w-6 text-bizflow-blue-600" />
+                    <Lock className="h-6 w-6 text-bizflow-blue-600" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
@@ -136,13 +134,13 @@ const CookiesPolicyContent = () => {
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
                       <p>
-                        Puedes controlar y/o eliminar las cookies según desees:
+                        Usted tiene control sobre las cookies en su navegador:
                       </p>
                       <ul className="list-disc pl-6 space-y-2">
-                        <li>Configurar tu navegador para bloquear cookies</li>
-                        <li>Eliminar cookies existentes desde tu navegador</li>
-                        <li>Configurar preferencias en nuestro banner de cookies</li>
-                        <li>Optar por no recibir cookies de terceros</li>
+                        <li>Puede aceptar o rechazar todas las cookies</li>
+                        <li>Configurar qué tipos de cookies permite</li>
+                        <li>Eliminar las cookies existentes</li>
+                        <li>Recibir alertas cuando se intenten establecer cookies</li>
                       </ul>
                     </div>
                   </div>
@@ -158,23 +156,29 @@ const CookiesPolicyContent = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-bizflow-blue-50 rounded-lg">
-                    <Bell className="h-6 w-6 text-bizflow-blue-600" />
+                    <Eye className="h-6 w-6 text-bizflow-blue-600" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
-                      Actualizaciones de la Política
+                      Uso de la Información
                     </h2>
                     <div className="space-y-4 text-bizflow-gray-600">
                       <p>
-                        Podemos actualizar esta política de cookies ocasionalmente para reflejar cambios en nuestras prácticas o por otros motivos operativos, legales o regulatorios.
+                        La información recopilada a través de cookies se utiliza para:
                       </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>Mejorar la funcionalidad del sitio web</li>
+                        <li>Analizar patrones de uso y tendencias</li>
+                        <li>Personalizar su experiencia</li>
+                        <li>Optimizar nuestros servicios</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </motion.div>
             </div>
 
-            {/* Contacto para Preguntas */}
+            {/* Contacto para Cookies */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -183,10 +187,10 @@ const CookiesPolicyContent = () => {
               className="mt-16 p-8 bg-bizflow-blue-50 rounded-lg text-center"
             >
               <h2 className="text-2xl font-bold text-bizflow-blue-900 mb-4">
-                ¿Tienes preguntas sobre nuestras cookies?
+                ¿Tiene preguntas sobre cookies?
               </h2>
               <p className="text-bizflow-gray-600 mb-4">
-                Si tienes alguna pregunta sobre cómo utilizamos las cookies, no dudes en contactarnos.
+                Si tiene alguna pregunta sobre cómo utilizamos las cookies o desea más información, no dude en contactarnos.
               </p>
               <a
                 href="mailto:cookies@bizflow.com"
