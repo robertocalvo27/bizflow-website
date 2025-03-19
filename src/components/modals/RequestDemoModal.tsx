@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { MessageSquare, Sparkles, ArrowRight, Send, Bot, User, Calendar } from 'lucide-react'
+import Link from 'next/link'
 
 const industries = [
   { id: 'manufactura', name: 'Manufactura', icon: '🏭' },
@@ -407,20 +408,20 @@ const RequestDemoModal = () => {
                   <div className="bg-white rounded-lg p-4 border border-bizflow-blue-100">
                     <h4 className="font-medium text-bizflow-blue-900 mb-2">Mientras tanto, te puede interesar:</h4>
                     <div className="space-y-3">
-                      <a 
+                      <Link 
                         href="/casos-exito" 
                         className="flex items-center gap-2 text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors"
                       >
                         <ArrowRight className="h-4 w-4" />
                         Descubre cómo otras empresas de {industry} están usando Bizflow
-                      </a>
-                      <a 
+                      </Link>
+                      <Link 
                         href="/blog" 
                         className="flex items-center gap-2 text-bizflow-gray-700 hover:text-bizflow-blue-600 transition-colors"
                       >
                         <ArrowRight className="h-4 w-4" />
                         Lee nuestros artículos sobre transformación digital industrial
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
