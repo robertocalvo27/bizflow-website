@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Mapa del Sitio | Bizflow',
@@ -15,11 +16,11 @@ export default function SiteMapPage() {
         <div>
           <h2 className="text-2xl font-semibold text-bizflow-blue-800 mb-6">Principal</h2>
           <ul className="space-y-3">
-            <li><a href="/" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Inicio</a></li>
-            <li><a href="/nosotros" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Nosotros</a></li>
-            <li><a href="/servicios" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Servicios</a></li>
-            <li><a href="/contacto" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Contacto</a></li>
-            <li><a href="/blog" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Blog</a></li>
+            <li><Link href="/" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Inicio</Link></li>
+            <li><Link href="/nosotros" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Nosotros</Link></li>
+            <li><Link href="/servicios" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Servicios</Link></li>
+            <li><Link href="/contacto" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Contacto</Link></li>
+            <li><Link href="/blog" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Blog</Link></li>
           </ul>
         </div>
 
@@ -27,13 +28,13 @@ export default function SiteMapPage() {
         <div>
           <h2 className="text-2xl font-semibold text-bizflow-blue-800 mb-6">Servicios</h2>
           <ul className="space-y-3">
-            <li><a href="/servicios/software-operativo" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Software Operativo</a></li>
-            <li><a href="/servicios/apps-empresariales" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Apps para su Empresa</a></li>
-            <li><a href="/servicios/software-as-a-service" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">SaaS (Software as a Service)</a></li>
-            <li><a href="/servicios/analitica-industrial" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Analítica Industrial</a></li>
-            <li><a href="/servicios/automatizacion" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Automatización</a></li>
-            <li><a href="/servicios/integracion" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Integración de Sistemas</a></li>
-            <li><a href="/servicios/infraestructura-soporte" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Infraestructura y Soporte</a></li>
+            <li><Link href="/servicios/software-operativo" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Software Operativo</Link></li>
+            <li><Link href="/servicios/apps-empresariales" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Apps para su Empresa</Link></li>
+            <li><Link href="/servicios/software-as-a-service" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">SaaS (Software as a Service)</Link></li>
+            <li><Link href="/servicios/analitica-industrial" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Analítica Industrial</Link></li>
+            <li><Link href="/servicios/automatizacion" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Automatización</Link></li>
+            <li><Link href="/servicios/integracion" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Integración de Sistemas</Link></li>
+            <li><Link href="/servicios/infraestructura-soporte" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Infraestructura y Soporte</Link></li>
           </ul>
         </div>
 
@@ -41,10 +42,10 @@ export default function SiteMapPage() {
         <div>
           <h2 className="text-2xl font-semibold text-bizflow-blue-800 mb-6">Industrias</h2>
           <ul className="space-y-3">
-            <li><a href="/industrias/manufactura" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Manufactura</a></li>
-            <li><a href="/industrias/farmaceutica" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Farmacéutica</a></li>
-            <li><a href="/industrias/mineria" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Minería</a></li>
-            <li><a href="/industrias/alimentos-bebidas" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Alimentos y Bebidas</a></li>
+            <li><Link href="/industrias/manufactura" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Manufactura</Link></li>
+            <li><Link href="/industrias/farmaceutica" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Farmacéutica</Link></li>
+            <li><Link href="/industrias/mineria" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Minería</Link></li>
+            <li><Link href="/industrias/alimentos-bebidas" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Alimentos y Bebidas</Link></li>
           </ul>
         </div>
 
@@ -52,8 +53,8 @@ export default function SiteMapPage() {
         <div>
           <h2 className="text-2xl font-semibold text-bizflow-blue-800 mb-6">Legal</h2>
           <ul className="space-y-3">
-            <li><a href="/politica-privacidad" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Política de Privacidad</a></li>
-            <li><a href="/terminos-condiciones" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Términos y Condiciones</a></li>
+            <li><Link href="/politica-privacidad" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Política de Privacidad</Link></li>
+            <li><Link href="/terminos-condiciones" className="text-bizflow-blue-600 hover:text-bizflow-purple-600">Términos y Condiciones</Link></li>
           </ul>
         </div>
       </div>
