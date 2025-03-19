@@ -42,6 +42,91 @@ const blogPosts = [
   }
 ]
 
+const BlogCard = ({ post, index }: { post: typeof blogPosts[0], index: number }) => {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress: cardScrollProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const cardY = useTransform(cardScrollProgress, [0, 1], [50, -50])
+  const cardScale = useTransform(cardScrollProgress, [0, 0.5, 1], [0.95, 1.02, 0.95])
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{ 
+        y: cardY,
+        scale: cardScale
+      }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+      whileHover={{ y: -8, transition: { duration: 0.2 } }}
+    >
+      <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-shadow border-none shadow-md bg-white">
+        <div className="relative h-48 w-full overflow-hidden">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
+            className="h-full w-full"
+          >
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform"
+              crossOrigin="anonymous"
+            />
+          </motion.div>
+          <motion.div 
+            className="absolute top-4 left-4 bg-bizflow-blue-600 text-white text-xs font-medium px-2 py-1 rounded"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: 0.2 + (index * 0.1) }}
+          >
+            {post.category}
+          </motion.div>
+        </div>
+        <CardHeader className="pb-2">
+          <Link href={`/blog/${post.slug}`} className="group">
+            <h3 className="text-xl font-bold text-bizflow-gray-900 group-hover:text-bizflow-blue-600 transition-colors">
+              {post.title}
+            </h3>
+          </Link>
+        </CardHeader>
+        <CardContent className="pb-4 flex-grow">
+          <p className="text-bizflow-gray-600 mb-4">
+            {post.excerpt}
+          </p>
+          <div className="flex items-center text-sm text-bizflow-gray-500 space-x-4">
+            <div className="flex items-center">
+              <User className="h-4 w-4 mr-1" />
+              <span>{post.author}</span>
+            </div>
+            <div className="flex items-center">
+              <Calendar className="h-4 w-4 mr-1" />
+              <span>{post.date}</span>
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className="pt-0">
+          <motion.div
+            whileHover={{ x: 5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link href={`/blog/${post.slug}`} className="text-bizflow-blue-600 font-medium flex items-center hover:text-bizflow-blue-700 transition-colors">
+              Leer más <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </motion.div>
+        </CardFooter>
+      </Card>
+    </motion.div>
+  )
+}
+
 const BlogSection = () => {
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -98,91 +183,9 @@ const BlogSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => {
-            const cardRef = useRef<HTMLDivElement>(null)
-            const { scrollYProgress: cardScrollProgress } = useScroll({
-              target: cardRef,
-              offset: ["start end", "end start"]
-            })
-            
-            const cardY = useTransform(cardScrollProgress, [0, 1], [50, -50])
-            const cardScale = useTransform(cardScrollProgress, [0, 0.5, 1], [0.95, 1.02, 0.95])
-            
-            return (
-              <motion.div
-                key={post.id}
-                ref={cardRef}
-                style={{ 
-                  y: cardY,
-                  scale: cardScale
-                }}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              >
-                <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-shadow border-none shadow-md bg-white">
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
-                      className="h-full w-full"
-                    >
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform"
-                        crossOrigin="anonymous"
-                      />
-                    </motion.div>
-                    <motion.div 
-                      className="absolute top-4 left-4 bg-bizflow-blue-600 text-white text-xs font-medium px-2 py-1 rounded"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.2 + (index * 0.1) }}
-                    >
-                      {post.category}
-                    </motion.div>
-                  </div>
-                  <CardHeader className="pb-2">
-                    <Link href={`/blog/${post.slug}`} className="group">
-                      <h3 className="text-xl font-bold text-bizflow-gray-900 group-hover:text-bizflow-blue-600 transition-colors">
-                        {post.title}
-                      </h3>
-                    </Link>
-                  </CardHeader>
-                  <CardContent className="pb-4 flex-grow">
-                    <p className="text-bizflow-gray-600 mb-4">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center text-sm text-bizflow-gray-500 space-x-4">
-                      <div className="flex items-center">
-                        <User className="h-4 w-4 mr-1" />
-                        <span>{post.author}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        <span>{post.date}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="pt-0">
-                    <motion.div
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Link href={`/blog/${post.slug}`} className="text-bizflow-blue-600 font-medium flex items-center hover:text-bizflow-blue-700 transition-colors">
-                        Leer más <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </motion.div>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            )
-          })}
+          {blogPosts.map((post, index) => (
+            <BlogCard key={post.id} post={post} index={index} />
+          ))}
         </div>
 
         <motion.div
