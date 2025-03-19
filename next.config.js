@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
-  distDir: process.env.NODE_ENV === "production" ? "build" : ".next",
+  distDir: ".next",
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
