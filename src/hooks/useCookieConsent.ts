@@ -45,8 +45,12 @@ export const useCookieConsent = () => {
 }
 
 // Tipos para TypeScript
+type GtagConsentUpdate = {
+  analytics_storage: 'granted' | 'denied'
+}
+
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
+    gtag?: (command: 'consent', type: 'update', params: GtagConsentUpdate) => void
   }
 } 
