@@ -9,10 +9,24 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
 
+// Definir la interfaz para el tipo Job
+interface Job {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  department: string;
+  industry: string;
+  technologies: string[];
+  type: string;
+  remote: boolean;
+  slug: string;
+}
+
 // Datos de ejemplo para las vacantes
-const jobOpenings = [
+const jobOpenings: Job[] = [
   {
-    id: 1,
+    id: "1",
     title: "Ingeniero Full-Stack para Sector Salud",
     description: "Desarrolla apps de trazabilidad médica integradas con SAP. Requisito: Curiosidad por aprender normas FDA.",
     location: "Lima, Perú (Híbrido)",
@@ -20,11 +34,11 @@ const jobOpenings = [
     industry: "Salud",
     technologies: ["React", "Node.js", "SAP", "TypeScript"],
     type: "Tiempo completo",
-    remote: "Híbrido",
+    remote: true,
     slug: "ingeniero-full-stack-salud"
   },
   {
-    id: 2,
+    id: "2",
     title: "Especialista en IoT para Minería",
     description: "Diseña soluciones de monitoreo predictivo para maquinaria pesada. Experiencia en Python + ganas de visitar minas.",
     location: "Santiago, Chile (Híbrido)",
@@ -32,11 +46,11 @@ const jobOpenings = [
     industry: "Minería",
     technologies: ["Python", "AWS IoT", "MQTT", "TensorFlow"],
     type: "Tiempo completo",
-    remote: "Híbrido",
+    remote: true,
     slug: "especialista-iot-mineria"
   },
   {
-    id: 3,
+    id: "3",
     title: "Project Manager con Experiencia Operativa",
     description: "Gestiona implementaciones en plantas de energía. Ideal si has trabajado en mantenimiento o producción.",
     location: "Ciudad de México (Híbrido)",
@@ -44,11 +58,11 @@ const jobOpenings = [
     industry: "Energía",
     technologies: ["JIRA", "MS Project", "Agile", "Scrum"],
     type: "Tiempo completo",
-    remote: "Híbrido",
+    remote: true,
     slug: "project-manager-energia"
   },
   {
-    id: 4,
+    id: "4",
     title: "Desarrollador Frontend React",
     description: "Crea interfaces de usuario para aplicaciones de monitoreo industrial. Experiencia en visualización de datos en tiempo real.",
     location: "Remoto (LATAM)",
@@ -56,11 +70,11 @@ const jobOpenings = [
     industry: "Múltiples",
     technologies: ["React", "TypeScript", "D3.js", "Tailwind CSS"],
     type: "Tiempo completo",
-    remote: "Remoto",
+    remote: true,
     slug: "desarrollador-frontend-react"
   },
   {
-    id: 5,
+    id: "5",
     title: "Ingeniero DevOps",
     description: "Implementa y mantén infraestructura para aplicaciones críticas en entornos industriales. Experiencia en CI/CD y cloud.",
     location: "Bogotá, Colombia (Híbrido)",
@@ -68,11 +82,11 @@ const jobOpenings = [
     industry: "Múltiples",
     technologies: ["AWS", "Kubernetes", "Docker", "Terraform"],
     type: "Tiempo completo",
-    remote: "Híbrido",
+    remote: true,
     slug: "ingeniero-devops"
   },
   {
-    id: 6,
+    id: "6",
     title: "Analista de Datos para Logística",
     description: "Desarrolla modelos predictivos para optimizar cadenas de suministro en industrias pesadas.",
     location: "Buenos Aires, Argentina (Híbrido)",
@@ -80,7 +94,7 @@ const jobOpenings = [
     industry: "Logística",
     technologies: ["Python", "SQL", "Power BI", "Machine Learning"],
     type: "Tiempo completo",
-    remote: "Híbrido",
+    remote: true,
     slug: "analista-datos-logistica"
   }
 ]
@@ -204,7 +218,7 @@ const JobsSection = () => {
 }
 
 // Componente para mostrar una tarjeta de trabajo
-const JobCard = ({ job, index }: { job: any, index: number }) => {
+const JobCard = ({ job, index }: { job: Job, index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -244,7 +258,7 @@ const JobCard = ({ job, index }: { job: any, index: number }) => {
         <CardFooter className="pt-0 flex justify-between items-center">
           <div className="flex items-center">
             <Briefcase className="h-4 w-4 text-bizflow-gray-500 mr-2" />
-            <span className="text-sm text-bizflow-gray-500">{job.remote}</span>
+            <span className="text-sm text-bizflow-gray-500">{job.remote ? "Remoto" : "Híbrido"}</span>
           </div>
           <Link 
             href={`/carreras/${job.slug}`}
