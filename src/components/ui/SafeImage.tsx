@@ -4,9 +4,10 @@ import React from 'react'
 import Image, { ImageProps } from 'next/image'
 import { validateImageProps, createValidatedImageProps, ValidatedImageProps } from '@/utils/imageValidator'
 
-interface SafeImageProps extends Omit<ImageProps, 'crossOrigin'> {
+interface SafeImageProps extends Omit<ImageProps, 'crossOrigin' | 'alt'> {
   crossOrigin?: "anonymous" | "use-credentials"
   componentName?: string
+  alt: string
 }
 
 /**
@@ -14,14 +15,16 @@ interface SafeImageProps extends Omit<ImageProps, 'crossOrigin'> {
  * needed to prevent hydration errors are present.
  *
  * Always sets crossOrigin="anonymous" by default to prevent common hydration errors.
+ * Requires an alt prop for accessibility.
  */
 const SafeImage: React.FC<SafeImageProps> = (props) => {
-  const { componentName = 'Unknown', ...imageProps } = props
+  const { componentName = 'Unknown', alt, ...imageProps } = props
 
   // Set default crossOrigin to anonymous if not provided
   const safeProps: ImageProps = {
     ...imageProps,
     crossOrigin: props.crossOrigin || 'anonymous',
+    alt: alt
   }
 
   // In development, validate image props
