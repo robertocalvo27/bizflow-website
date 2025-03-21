@@ -1,4 +1,8 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
+import Image from 'next/image'
+import { ChevronLeft } from 'lucide-react'
+import { motion } from 'framer-motion'
 import BlogPostHeader from '../components/BlogPostHeader'
 import BlogPostContent from '../components/BlogPostContent'
 import BlogRelatedPosts from '../components/BlogRelatedPosts'
@@ -112,6 +116,42 @@ const relatedPosts = [
   }
 ]
 
+// JSON-LD Schema Component
+function BlogPostJsonLd({ post }: { post: any }) {
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': post.title,
+    'description': post.excerpt,
+    'image': post.image,
+    'datePublished': post.date,
+    'author': {
+      '@type': 'Person',
+      'name': post.author,
+      'jobTitle': post.authorPosition
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Bizflow',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://bizflow.pe/images/logo.svg'
+      }
+    },
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': `https://bizflow.pe/blog/${post.slug}`
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+    />
+  );
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   // En un caso real, aquí buscaríamos el artículo en la base de datos o API
   const post = blogPosts.find(post => post.slug === params.slug)
@@ -149,25 +189,28 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   }
   
   return (
-    <main className="min-h-screen pt-24">
-      <BlogPostHeader post={post} />
-      
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Contenido principal */}
-          <div className="lg:col-span-3">
-            <BlogPostContent content={post.content} />
+    <>
+      <BlogPostJsonLd post={post} />
+      <main className="min-h-screen pt-24">
+        <BlogPostHeader post={post} />
+        
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Contenido principal */}
+            <div className="lg:col-span-3">
+              <BlogPostContent content={post.content} />
+            </div>
+            
+            {/* Sidebar */}
+            <div className="lg:col-span-1 space-y-8">
+              {/* Aquí podrían ir widgets como categorías populares, newsletter, etc. */}
+            </div>
           </div>
           
-          {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-8">
-            {/* Aquí podrían ir widgets como categorías populares, newsletter, etc. */}
-          </div>
+          {/* Artículos relacionados */}
+          <BlogRelatedPosts posts={relatedPosts} />
         </div>
-        
-        {/* Artículos relacionados */}
-        <BlogRelatedPosts posts={relatedPosts} />
-      </div>
-    </main>
+      </main>
+    </>
   )
 } 

@@ -4,6 +4,32 @@ import BlogSearch from './components/BlogSearch'
 import BlogCategories from './components/BlogCategories'
 import BlogList from './components/BlogList'
 
+// JSON-LD Schema Component para el listado del blog
+function BlogListJsonLd() {
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    'headline': 'Blog | Bizflow - Conocimiento y Tendencias en Tecnología Industrial',
+    'description': 'Explore nuestros artículos sobre transformación digital, IoT industrial, automatización y las últimas tendencias en tecnología para la industria.',
+    'url': 'https://bizflow.pe/blog',
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Bizflow',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://bizflow.pe/images/logo.svg'
+      }
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+    />
+  );
+}
+
 export const metadata: Metadata = {
   title: 'Blog | Bizflow - Conocimiento y Tendencias en Tecnología Industrial',
   description: 'Explore nuestros artículos sobre transformación digital, IoT industrial, automatización y las últimas tendencias en tecnología para la industria.',
@@ -85,23 +111,26 @@ const categories = [
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen pt-24">
-      <BlogHeader />
-      
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Sidebar con búsqueda y categorías */}
-          <div className="lg:col-span-1 space-y-8">
-            <BlogSearch />
-            <BlogCategories categories={categories} />
-          </div>
-          
-          {/* Lista de artículos */}
-          <div className="lg:col-span-3">
-            <BlogList posts={blogPosts} />
+    <>
+      <BlogListJsonLd />
+      <main className="min-h-screen pt-24">
+        <BlogHeader />
+        
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Sidebar con búsqueda y categorías */}
+            <div className="lg:col-span-1 space-y-8">
+              <BlogSearch />
+              <BlogCategories categories={categories} />
+            </div>
+            
+            {/* Lista de artículos */}
+            <div className="lg:col-span-3">
+              <BlogList posts={blogPosts} />
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 } 
